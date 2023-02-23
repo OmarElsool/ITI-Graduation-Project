@@ -1,0 +1,171 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    font-family: OpenSans;
+    height: 100%;
+}
+
+@font-face {
+    font-family: 'opensans-regular';
+    src: url('../fonts/opensans-regular.ttf') format('truetype');
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* navbar */
+.navbar {
+    padding: 25px 0 0px;
+    /* position: fixed; */
+    display: block;
+    width: 100%;
+}
+
+.navbar-wrapper {
+    width: 100% !important;
+}
+
+.custom-toggle-dropdown {
+    color: black;
+    background-color: white;
+    border-radius: 30px;
+    border-color: gray;
+}
+
+    .custom-toggle-dropdown::after {
+        content: none;
+    }
+
+    .custom-toggle-dropdown:focus,
+    .custom-toggle-dropdown:checked,
+    .custom-toggle-dropdown:hover {
+        color: black;
+        background-color: white;
+        box-shadow: none;
+    }
+
+.img-dropdown {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.dropdown-container {
+    width: 65px;
+}
+
+.dropdown-icon {
+    margin: auto 0;
+}
+
+.dropdown-list {
+    border-radius: 15px !important;
+    margin-right: 10px !important;
+    top: 110% !important;
+    left: -140% !important;
+}
+
+    .dropdown-list li {
+        padding: 5px;
+    }
+
+.custom-hr-nav {
+    margin-bottom: 0;
+}
+
+/* footer */
+
+.footer {
+    background-color: rgb(247, 247, 247);
+}
+
+.footer-container {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+    margin-left: -12px !important;
+    margin-right: -12px !important;
+}
+
+    .footer-container ul {
+        padding: 0;
+    }
+
+    .footer-container li {
+        list-style: none;
+        margin-top: 16px;
+    }
+
+    .footer-container h3 {
+        font-size: unset;
+        font-weight: bold;
+    }
+
+.footer .socail {
+    font-size: 20px;
+}
+
+    .footer .socail a {
+        text-decoration: none;
+    }
+
+    .footer .socail i {
+        padding-left: 10px;
+    }
+
+/* Chat */
+
+.custom-chat-border {
+    border-right: 1px solid;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+
+.chat-titles {
+    padding: 15px 0px 10px 25px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.custom-border-chat {
+    border-bottom: 1px solid;
+}
+
+.chat-height {
+    height: 81vh;
+}
+
+.card-chat {
+    padding: 8px 10px 8px 8px;
+    margin: 0px 15px 8px;
+}
+
+.card-chat-bc {
+    background-color: rgb(247, 247, 247)
+}
+
+.card-body-chat {
+    padding: 0;
+}
+
+.chat-img {
+    width: 35px;
+    height: 35px;
+}
