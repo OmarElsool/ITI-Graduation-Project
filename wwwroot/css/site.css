@@ -29,7 +29,10 @@ body {
     margin: 0;
     padding: 0;
 }
-
+/*global using*/
+.h1-font {
+    font-size: 40px;
+}
 
 /* navbar */
 .navbar {
