@@ -1,0 +1,40 @@
+﻿@model IEnumerable<UserViewModel>
+@{
+    ViewData["Title"] = "UserWithRoles";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h1>User With Roles</h1>
+
+<partial name="_UserSearchForm" model="new UserViewModel()"/>
+
+<div class="row ">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Roles List</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> Email</th>
+                                <th> Roles</th>
+                                <th> Action </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var User in @Model)
+                            {
+                                <tr>
+                                    <td>@User.Email</td>
+                                    <td>@string.Join(" , ",@User.Roles)</td>
+                                    <td><a class="btn btn-primary" asp-action="ManageRoles" asp-route-userId="@User.Id">Manage Roles</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

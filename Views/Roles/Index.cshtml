@@ -1,0 +1,62 @@
+﻿@model IEnumerable<IdentityRole>
+@{
+    ViewData["Title"] = "Manage Roles";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h1>Roles</h1>
+
+<partial name="_RoleForm" model="new RoleFormViewModel()" /> 
+
+<div class="row ">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Roles List</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> Id </th>
+                                <th> Role Name</th>
+                                <th> Action </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var role in @Model)
+                            {
+                                <tr class="@role.Id">
+                                    <td>@role.Id</td>
+                                    <td>@role.Name</td>
+                                    <td><button href="javascript:;" data-id="@role.Id" class="btn btn-danger js-delete-role">Delete</button></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $(".js-delete-role").on("click", function () {
+                var btn = $(this);
+                var result = confirm("Are You Sure?");
+                if(result){
+                    $.ajax({
+                        url: "/Roles/DeleteRole/" + btn.data("id"),
+                        success: function () {
+                            btn.parents("." + btn.data("id")).fadeOut();
+                        },
+                        error: function () {
+                            alert("SomeThing Went Wrong");
+                        }
+                    });
+                }
+            })
+        })
+    </script>
+    <partial name="_ValidationScriptsPartial" />
+}

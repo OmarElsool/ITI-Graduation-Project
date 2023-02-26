@@ -10,6 +10,6 @@ namespace Airbnb.Models
         public int Id { get; set; }
         [Required]
         public string Name { get; set; } = "";
-        public virtual List<Mansion> Mansion { get; set; }
+        public virtual List<Mansion> Mansion { get; set; } = new List<Mansion>();
     }
 }

@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Mansion>
+@{
+    Layout = "_AdminLayout.cshtml";
+    ViewData["Title"] = "Index";
+}
+<h1 class="alert alert-dark ">Dashboard</h1>
+<div class="form-group row">
+    <label for="exampleInputUsername2" class="col-sm-2 col-form-label">Mansion Search</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" id="mansionNameSearch" placeholder="Mansion Name...">
+    </div>
+</div>
+<div class="row ">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Last Mansions State</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> Client Name </th>
+                                <th> Mansion Title </th>
+                                <th> Mansion Category </th>
+                                <th> Price </th>
+                                <th> Date </th>
+                                <th> Approve State</th>
+                                <th> Action </th>
+                            </tr>
+                        </thead>
+                        <tbody id="mansionBody">
+                            @foreach (var mansion in @Model)
+                            {
+                                <tr class="@mansion.Id">
+                                    <td> @mansion.User.Email </td>
+                                    <td> @mansion.Title </td>
+                                    <td> @mansion.Category.Name </td>
+                                    <td> @mansion.Price$ </td>
+                                    <td> @mansion.PostDate </td>
+                                    <td>
+                                        @if (mansion.Approved)
+                                        {
+                                            <div class="badge badge-outline-success">Approved</div>
+                                        }
+                                        else
+                                        {
+                                            <div class="badge badge-outline-warning">Pending or Rejected</div>
+                                        }
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-success" asp-route-mansionId="@mansion.Id" asp-route-mansionState="1" asp-action="MansionState">Approve</a>
+                                        <a class="btn btn-warning" asp-route-mansionId="@mansion.Id" asp-route-mansionState="0" asp-action="MansionState">Decline</a>
+                                        <a class="btn btn-info" asp-action="MansionDetails" asp-route-mansionId="@mansion.Id">Details</a>
+                                        <a class="btn btn-danger js-delete-mansion" data-id="@mansion.Id" href="javascript:;">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/js/site.js"></script>
+    <script>
+        // Delete mansion
+        $(document).ready(function () {
+            $(".js-delete-mansion").on("click", function () {
+                var btn = $(this);
+                console.log(btn.data("id"));
+                var result = confirm("Are You Sure?");
+                if(result){
+                    $.ajax({
+                        url: "/admin/MansionDelete/" + btn.data("id"),
+                        success: function () {
+                            btn.parents("." + btn.data("id")).fadeOut();
+                        },
+                        error: function () {
+                            alert("SomeThing Went Wrong");
+                        }
+                    });
+                }
+            })
+        })
+    </script>
+}
