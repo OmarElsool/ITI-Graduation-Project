@@ -25,10 +25,14 @@
                         <tbody>
                             @foreach (var User in @Model)
                             {
-                                <tr>
+                                <tr class="@User.Id">
                                     <td>@User.Email</td>
                                     <td>@string.Join(" , ",@User.Roles)</td>
-                                    <td><a class="btn btn-primary" asp-action="ManageRoles" asp-route-userId="@User.Id">Manage Roles</a></td>
+                                    <td>
+                                        <a class="btn btn-primary" asp-action="ManageRoles" asp-route-userId="@User.Id">Manage Roles</a>
+                                        <a class="btn btn-danger js-delete-user" href="javascript:;" data-id="@User.Id">Delete User</a>
+                                    </td>
+
                                 </tr>
                             }
                         </tbody>
@@ -38,3 +42,6 @@
         </div>
     </div>
 </div>
+@section Scripts {
+    <script src="~/js/site.js"></script>
+}

@@ -22,7 +22,7 @@ namespace Airbnb.Controllers.Admin
         // Dashboard Page
         public IActionResult Index()
         {
-            var mansions = db.Mansions.Include(m => m.User).Include(m => m.Category).ToList().OrderByDescending(m => m.PostDate).Take(5);
+            var mansions = db.Mansions.Include(m => m.User).Include(m => m.Category).OrderByDescending(m => m.PostDate).Take(10).ToList();
             return View(mansions);
         }
         [HttpGet]
@@ -82,12 +82,6 @@ namespace Airbnb.Controllers.Admin
             db.Mansions.Remove(mansion);
             db.SaveChanges();
             return Ok();
-        }
-
-        // Category Page
-        public IActionResult CategoryIndex()
-        {
-            return View();
         }
     }
 }

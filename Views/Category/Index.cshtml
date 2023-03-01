@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MansionCategory>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h1>Mansion Categories</h1>
+
+<partial name="_CategoryForm" model="new MansionCategory()" />
+
+    <div class="row">
+@foreach (var category in @Model)
+{
+        <div class="col-sm-4 col-md-3 mb-3 @category.Id">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">@category.Name</h5>
+                    <a href="javascript:;" data-id="@category.Id" class="btn btn-danger js-delete-category">Delete</a>
+              </div>
+            </div>
+        </div>
+}
+    </div>
+@section Scripts {
+    <script src="~/js/site.js">
+        //$(document).ready(function () {
+        //    $(".js-delete-category").on("click", function () {
+        //        var btn = $(this);
+        //        var result = confirm("Are You Sure?");
+        //        if (result) {
+        //            $.ajax({
+        //                url: "/Category/Delete/" + btn.data("id"),
+        //                success: function () {
+        //                    btn.parents("." + btn.data("id")).fadeOut();
+        //                },
+        //                error: function () {
+        //                    alert("SomeThing Went Wrong");
+        //                }
+        //            });
+        //        }
+        //    })
+        //})
+    </script>
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ServiceTypeModel>
+@{
+    ViewData["Title"] = "Manage Roles";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h1>Services</h1>
+
+<partial name="_ServiceTypeForm" model="new ServiceTypeModel()" />
+<a class="btn btn-primary mb-3" asp-action="AddService">Add New Service</a>
+
+@foreach (var serviceType in @Model)
+{
+<div class="@serviceType.Id">
+    <div class="d-flex justify-content-center">
+        <a asp-action="EditServiceType" asp-controller="Service" asp-route-id="@serviceType.Id" class="d-flex flex-column justify-content-center px-2 pb-1 text-primary">
+            <i class="fa-solid fa-pen-to-square"></i>
+        </a>
+        <h2>@serviceType.ServiceType</h2>
+        <a href="javascript:;" data-id="@serviceType.Id" class="js-delete-serviceType d-flex flex-column justify-content-center px-2 pb-1 text-danger">
+            <i class="fa-solid fa-trash-can"></i>
+        </a>
+    </div>
+    <div class="row">
+    @foreach (var service in serviceType.Service)
+    {
+            <div class="col-sm-4 col-md-3 mb-3 @service.Id">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@service.Name</h5>
+                    <p class="card-text">@service.Description</p>
+                    <a href="javascript:;" data-id="@service.Id" class="btn btn-danger js-delete-service">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+    </div>
+</div>
+}
+@section Scripts {
+    <script src="~/js/site.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+}

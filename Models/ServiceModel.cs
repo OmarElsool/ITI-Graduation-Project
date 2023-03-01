@@ -14,6 +14,6 @@ namespace Airbnb.Models
         public virtual ICollection<Mansion> Mansion { get; set; } = new HashSet<Mansion>();
         [ForeignKey("ServiceType")]
         public int ServiceTypeId { get; set; }
-        public virtual ServiceTypeModel ServiceType { get; set; }
+        public virtual ServiceTypeModel? ServiceType { get; set; }
     }
 }
