@@ -28,7 +28,7 @@
                                 <tr class="@role.Id">
                                     <td>@role.Id</td>
                                     <td>@role.Name</td>
-                                    <td><button href="javascript:;" data-id="@role.Id" class="btn btn-danger js-delete-role">Delete</button></td>
+                                    <td><button onclick="" data-id="@role.Id" class="btn btn-danger js-delete-role">Delete</button></td>
                                 </tr>
                             }
                         </tbody>
@@ -39,24 +39,6 @@
     </div>
 </div>
 @section Scripts {
-    <script>
-        $(document).ready(function () {
-            $(".js-delete-role").on("click", function () {
-                var btn = $(this);
-                var result = confirm("Are You Sure?");
-                if(result){
-                    $.ajax({
-                        url: "/Roles/DeleteRole/" + btn.data("id"),
-                        success: function () {
-                            btn.parents("." + btn.data("id")).fadeOut();
-                        },
-                        error: function () {
-                            alert("SomeThing Went Wrong");
-                        }
-                    });
-                }
-            })
-        })
-    </script>
+    <script src="~/js/site.js"></script>
     <partial name="_ValidationScriptsPartial" />
 }

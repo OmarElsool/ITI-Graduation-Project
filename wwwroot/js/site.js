@@ -1,10 +1,41 @@
 ﻿
 $(function () {
     $("#mansionNameSearch").keyup(function () {
-        GetMansions();
+        if ($(this).val)
+            GetMansions();
     });
-});
+    //delete role
+    deleteByAjax('.js-delete-role', '/Roles/DeleteRole/')
+    // Delete mansion
+    deleteByAjax('.js-delete-mansion', '/admin/MansionDelete/')
+    // Delete Category
+    deleteByAjax('.js-delete-category', '/Category/Delete/');
+    // Delete Service
+    deleteByAjax('.js-delete-service', '/Service/DeleteService/');
+    // Delete Service Type
+    deleteByAjax('.js-delete-serviceType', '/Service/DeleteServiceType/');
+    // Delete User
+    deleteByAjax('.js-delete-user', '/Roles/DeleteUser/');
 
+});
+//delete by ajax
+function deleteByAjax(cls, url) {
+    $(cls).on("click", function () {
+        var btn = $(this);
+        var result = confirm("Are You Sure?");
+        if (result) {
+            $.ajax({
+                url: url + btn.data("id"),
+                success: function () {
+                    btn.parents("." + btn.data("id")).fadeOut();
+                },
+                error: function () {
+                    alert("SomeThing Went Wrong");
+                }
+            });
+        }
+    })
+}
 
 function GetMansions() {
     var mansionName = $.trim($("#mansionNameSearch").val());
@@ -47,3 +78,5 @@ function GetMansions() {
         }
     });
 }
+
+

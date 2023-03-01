@@ -91,7 +91,7 @@ namespace Airbnb.Controllers.Admin
             }
             return RedirectToAction(nameof(UserWithRoles));
         }
-        public async Task<IActionResult> UserSearch(string? Email)
+        public ActionResult UserSearch(string? Email)
         {
             if (Email == null)
             {
@@ -118,6 +118,21 @@ namespace Airbnb.Controllers.Admin
                 return NotFound();
             }
             await roleManager.DeleteAsync(role);
+
+            return Ok();
+        }
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var user = await userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            await userManager.DeleteAsync(user);
 
             return Ok();
         }
