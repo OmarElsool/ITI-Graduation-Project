@@ -6,7 +6,7 @@ namespace Airbnb.ModelsValidations
     {
         public override bool IsValid(object? value)
         {
-            if (value is DateOnly date && date > DateOnly.FromDateTime(DateTime.Now))
+            if (value is DateOnly date && date < DateOnly.FromDateTime(DateTime.Now))
             {
                 return true;
             }
