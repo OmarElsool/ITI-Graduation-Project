@@ -1,0 +1,53 @@
+.icon-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.fa-solid{
+    font-size:x-large !important;
+}
+.category-name {
+    color: gray;
+    text-decoration: none;
+}
+.Active,
+.Active:hover,
+.category-name:hover {
+     color: gray;
+     border-bottom: 2px solid lightgray;
+     padding-bottom: 15px;
+     text-decoration: none;
+}
+.category-namea:active {
+    color: black;
+    border-bottom: 2px solid black;
+    padding-bottom: 15px;
+}
+.home-card{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    height: auto;
+}
+.card{
+    width: 18rem;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.img-content {
+    height: 18rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+.info-title{
+    padding: 0;
+    margin: 0;
+}
+.gray{
+    color:gray;
+}

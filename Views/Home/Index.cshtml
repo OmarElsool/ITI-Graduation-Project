@@ -1,8 +1,33 @@
-﻿@{
+﻿@model Airbnb.ViewModels.HomeControlerViewModel;
+@{
     ViewData["Title"] = "Home Page";
 }
+<div class="icon-bar my-5">
+    @foreach (var m in Model.MansionCategories)
+    {
+        <div class="scroll">
+            <i class=" fa-solid fa-umbrella-beach d-flex justify-content-center"></i>
+            <a class="my-1 category-name" asp-controller="Home" asp-action="FilterMansion" asp-route-CategoryId="@m.Id">@m.Name</a>
+        </div>
+    }
+</div>
+<div class="home-card">
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @foreach (var item in Model.Mansion)
+    {
+        <div class="carousel slide card">
+            <img src="./Images/pexels-henda-watani-320014.jpg" alt="MansionImage" class="img-content">
+            <p class="mt-2 ms-2 fw-bold info-title">@item.City</p>
+            <p class="ms-2 info-title gray">@item.Title,@item.Description</p>
+            <p class="ms-2 info-title gray">@item.Price</p>
+            <button class="carousel-control-prev" type="button">
+                <span class="carousel-control-prev-icon"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button">
+                <span class="carousel-control-next-icon"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    }
 </div>
