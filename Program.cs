@@ -25,6 +25,7 @@ namespace Airbnb
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireLowercase = false;
+                options.SignIn.RequireConfirmedEmail = false;
             })
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();

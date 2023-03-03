@@ -22,18 +22,18 @@
 
 <body>
 
-<form enctype="multipart/form-data" method="post" asp-action="GenerateMansion">
 <section>
     <nav class="container navbar">
         <div class="container-fluid">
-            <a class="navbar-brand">
-                <img class="photo" src="~/Images/" alt="logo" class="img-fluid">
+            <a class="navbar-brand" asp-action="Index" asp-controller="Home">
+                <img class="photo" src="~/Images/Airbnb_Logo_Bélo.svg.png" alt="logo" class="img-fluid">
             </a>
-            <button asp-action="Index" asp-controller="Home" class="btn btn-outline-dark rounded-pill">Quit</button>
+            <a asp-action="Index" asp-controller="Home" class="btn btn-outline-dark rounded-pill">Quit</a>
 
         </div>
     </nav>
 </section>
+<form enctype="multipart/form-data" method="post" asp-action="GenerateMansion">
 <div class="cs-slider">
         <div class="cs-slider-wrapper">
 

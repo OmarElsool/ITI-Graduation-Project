@@ -10,7 +10,8 @@ namespace Airbnb.Models
         [Required]
         public int CVV { get; set; }
         [Required]
-        public DateOnly Expiration { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime Expiration { get; set; }
         [ForeignKey("User")]
         public string UserId { get; set; }
         public virtual AppUser User { get; set; }

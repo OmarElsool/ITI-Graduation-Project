@@ -33,7 +33,8 @@ namespace Airbnb.Models
         public int Build_No { get; set; }
         [Required, StringLength(15, MinimumLength = 2)]
         public string Zipcode { get; set; } = "";
-        public DateTime PostDate { get; set; }
+        [DataType(DataType.DateTime)]
+        public DateTime PostDate { get; set; } = DateTime.Now;
         public virtual ICollection<Reservation> Reservations { get; set; } = new HashSet<Reservation>();
         public virtual ICollection<Review> Reviews { get; set; } = new HashSet<Review>();
         public virtual ICollection<MansionPhotoModel> MansionPhotos { get; set; } = new HashSet<MansionPhotoModel>();
