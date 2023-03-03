@@ -13,10 +13,12 @@ namespace Airbnb.Controllers
     public class ManageListing : Controller
     {
         ApplicationDbContext db;
+        private readonly IWebHostEnvironment hostEnvironment;
 
-        public ManageListing(ApplicationDbContext _db)
+        public ManageListing(ApplicationDbContext _db, IWebHostEnvironment _hostEnvironment)
         {
             db = _db;
+            hostEnvironment = _hostEnvironment;
         }
 
         public IActionResult Index()
@@ -86,6 +88,12 @@ namespace Airbnb.Controllers
 
         public string UploadFiles(IFormFile file)
         {
+
+            string path = Path.Combine(hostEnvironment.WebRootPath, "Images/mansionsPhotos/");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
             string fileName = "";
             if (file != null)
             {
