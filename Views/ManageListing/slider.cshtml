@@ -1,0 +1,773 @@
+@{
+    ViewData["Title"] = "Select Category";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="SliderStyle.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"
+            integrity="sha512-kgBIOG9s9ogF/IK+L8QvTfM60U6jjJTD6nKl6"></script>
+
+    <title>Slider</title>
+</head>
+
+<body>
+
+    <section>
+        <nav class="container navbar  ">
+            <div class="container-fluid">
+                <a class="navbar-brand">
+                    <img class="photo" src="/580b57fcd9996e24bc43c513.png" alt="logo" class="img-fluid">
+                </a>
+                <form class="d-flex" role="search">
+                    <button class="btn btn-outline-dark rounded-pill" type="submit">Save&Quit</button>
+                </form>
+            </div>
+        </nav>
+    </section>
+    <div class="cs-slider">
+        <div class="cs-slider-wrapper">
+
+            <div class="container m-auto ">
+                <div class="row m-5">
+                    <div class="col-4 ms-5 ">
+                        <span class="fw-bolder">
+                            Step 1
+                        </span> <br>
+                        <h2>
+                            Tell us about your place
+                        </h2>
+                        <p>
+                            In this step, we'll ask you which type of property you have and if guests will book the
+                            entire place or just a room. Then let us know the location and how many guests can stay.
+                        </p>
+
+                    </div>
+
+                    <div class="col-4 ms-5  ">
+                        <!-- <video
+                            class="w-100  h-50" src="/Step 1- Tell us about your place.mp4"
+                            autoplay>
+                            </video> -->
+
+                        <video class="firstv w-100 h-100" autoplay>
+                            <source src="/Step 1- Tell us about your place.mp4" type="video/mp4" />
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="cs-slider-wrapper cs-hide">
+            <div class="container">
+                <div class="container mt-5">
+                    <h1 class="text-center">What Type of Place will guests have?</h1>
+                </div>
+                <div class="row justify-content-center">
+                    <form class="row justify-content-center">
+                        <div class="col-md-8">
+                            <label>
+                                <input asp-for="Description" id="typeinput" class="card-radio-input" type="radio"
+                                       name="placeType" value="Entire place" />
+                                <div id="type" class="card">
+                                    <img id="typeicon" class="card-img-top"
+                                         src="https://a0.muscache.com/pictures/4d7580e1-4ab2-4d26-a3d6-97f9555ba8f9.jpg"
+                                         alt="Entire place photo" />
+                                    <div id="typebody" class="card-body">
+                                        <h5 id="typetitle" class="card-title">An entire place</h5>
+                                        <p class="card-text">Guests have the whole place to themselves</p>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="col-md-8">
+                            <label>
+                                <input asp-for="Description" id="typeinput" class="card-radio-input" type="radio"
+                                       name="placeType" value="Entire place" />
+                                <div id="type" class="card">
+                                    <img id="typeicon" class="card-img-top"
+                                         src="https://a0.muscache.com/pictures/6f261426-2e47-4c91-8b1a-7a847da2b21b.jpg"
+                                         alt="Entire place photo" />
+                                    <div id="typebody" class="card-body">
+                                        <h5 id="typetitle" class="card-title">A private Room</h5>
+                                        <p class="card-text">
+                                            Guests sleep in a private room but some areas may be
+                                            shared with you or others
+                                        </p>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="col-md-8">
+                            <label>
+                                <input asp-for="Description" id="typeinput" class="card-radio-input" type="radio"
+                                       name="placeType" value="Entire place" />
+                                <div id="type" class="card">
+                                    <img id="typeicon" class="card-img-top"
+                                         src="https://a0.muscache.com/pictures/21cfc7c9-5457-494d-9779-7b0c21d81a25.jpg"
+                                         alt="Entire place photo" />
+                                    <div id="typebody" class="card-body">
+                                        <h5 id="typetitle" class="card-title">A shared Room</h5>
+                                        <p class="card-text">
+                                            Guests sleep in a room or common area that may be shared
+                                            with you or others
+                                        </p>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="cs-slider-wrapper cs-hide">
+            <div class="container">
+                <div class="container mt-5">
+                    <h1 class="text-center">Which of these best describes your place?</h1>
+                    <!-- <p class="text-center">You'll need 5 photos to get started. You can add more or make changes later. -->
+                    </p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <label>
+                            <input asp-for="Description" id="input" class="card-radio-input" type="radio"
+                                   name="placeType" value="Entire place" />
+                            <div id="category" class="card">
+                                <img id="icon" class="card-img-top"
+                                     src="https://a0.muscache.com/pictures/4d7580e1-4ab2-4d26-a3d6-97f9555ba8f9.jpg"
+                                     alt="Entire place photo" />
+                                <div id="body" class="card-body">
+                                    <h5 id="title" class="card-title">House</h5>
+                                    <p class="card-text"></p>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input asp-for="Description" id="input" class="card-radio-input" type="radio"
+                                   name="placeType" value="Entire place" />
+                            <div id="category" class="card">
+                                <img id="icon" class="card-img-top"
+                                     src="https://a0.muscache.com/pictures/6f261426-2e47-4c91-8b1a-7a847da2b21b.jpg"
+                                     alt="Entire place photo" />
+                                <div id="body" class="card-body">
+                                    <h5 id="title" class="card-title">Apartment</h5>
+                                    <p class="card-text"></p>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input asp-for="Description" id="input" class="card-radio-input" type="radio"
+                                   name="placeType" value="Entire place" />
+                            <div id="category" class="card">
+                                <img id="icon" class="card-img-top"
+                                     src="https://a0.muscache.com/pictures/21cfc7c9-5457-494d-9779-7b0c21d81a25.jpg"
+                                     alt="Entire place photo" />
+                                <div id="body" class="card-body">
+                                    <h5 id="title" class="card-title">Hotel</h5>
+                                    <p class="card-text"></p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="col-md-8">
+                        <label>
+                            <input asp-for="Description" id="input" class="card-radio-input" type="radio"
+                                   name="placeType" value="Entire place" />
+                            <div id="category" class="card">
+                                <img id="icon" class="card-img-top"
+                                     src="https://a0.muscache.com/pictures/21cfc7c9-5457-494d-9779-7b0c21d81a25.jpg"
+                                     alt="Entire place photo" />
+                                <div id="body" class="card-body">
+                                    <h5 id="title" class="card-title">Shared Room</h5>
+                                    <p class="card-text"></p>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input asp-for="Description" id="input" class="card-radio-input" type="radio"
+                                   name="placeType" value="Entire place" />
+                            <div id="category" class="card">
+                                <img id="icon" class="card-img-top"
+                                     src="https://a0.muscache.com/pictures/64b27fed-56a1-4f03-950a-d8da08efb428.jpg"
+                                     alt="Entire place photo" />
+                                <div id="body" class="card-body">
+                                    <h5 id="title" class="card-title">Guest House</h5>
+                                    <p class="card-text"></p>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input asp-for="Description" id="input" class="card-radio-input" type="radio"
+                                   name="placeType" value="Entire place" />
+                            <div id="category" class="card">
+                                <img id="icon" class="card-img-top"
+                                     src="https://a0.muscache.com/pictures/4d7580e1-4ab2-4d26-a3d6-97f9555ba8f9.jpg"
+                                     alt="Entire place photo" />
+                                <div id="body" class="card-body">
+                                    <h5 id="title" class="card-title">Cabin</h5>
+                                    <p class="card-text"></p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="cs-slider-wrapper cs-hide">
+
+            <section>
+                <div class="mt-5 d-flex justify-content-center">
+                    <div class=" d-flex flex-column ">
+                        <h1>Confirm your address</h1>
+                        <p class="text-secondary">
+                            Your address is only shared with guests after they’ve made a
+                            reservation.
+                        </p>
+                        <div class="input-group ">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Street</span>
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                   aria-describedby="inputGroup-sizing-default">
+                        </div>
+
+                        <div class="input-group ">
+                            <span class="input-group-text" id="inputGroup-sizing-default">City</span>
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                   aria-describedby="inputGroup-sizing-default">
+                        </div>
+
+                        <div class="input-group ">
+                            <span class="input-group-text" id="inputGroup-sizing-default">State</span>
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                   aria-describedby="inputGroup-sizing-default">
+                        </div>
+
+                        <div class="input-group ">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Zip Code </span>
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                   aria-describedby="inputGroup-sizing-default">
+                        </div>
+
+                        <div class="input-group ">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Build Number</span>
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                   aria-describedby="inputGroup-sizing-default">
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+
+
+
+        <div class="cs-slider-wrapper cs-hide">
+
+            <div class="d-flex flex-column p-lg-5 margin-edit">
+                <div class="p-2 mb-3 text-start">
+                    <h1>Share some basics about your place</h1>
+                    <p class="fw-semibold text-muted">
+                        You'll add more details later, like bed types.
+                    </p>
+                </div>
+                <div class="d-grid gap-2 m-1 h4 pb-2 mb-4 border-bottom border-dark-subtle">
+                    <div class="d-flex mb-3">
+                        <div class="me-auto p-2">Guests</div>
+                        <div class="p-2">
+                            <button id="btn1" type="button" class="btn btn-light border border-dark-subtle rounded-5"
+                                    onclick="Counertfunc()">
+                                <svg width="15px" height="20px" viewBox="0 0 24 24" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path d="M5 12H19" stroke="#323232" stroke-width="2" stroke-linecap="round"
+                                              stroke-linejoin="round"></path>
+                                        <path d="M12 5L12 19" stroke="#323232" stroke-width="2" stroke-linecap="round"
+                                              stroke-linejoin="round"></path>
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="p-2 d-flex"><span class="p-2 counter">0</span></div>
+                        <div class="p-2">
+                            <button id="btn2" type="button" class="btn btn-light border border-dark-subtle rounded-5"
+                                    onclick="CounertfuncDown()">
+                                <svg width="15px" height="20px" viewBox="0 0 24 24" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path d="M5 12H19" stroke="#323232" stroke-width="2" stroke-linecap="round"
+                                              stroke-linejoin="round"></path>
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="d-grid gap-2 m-1 h4 pb-2 mb-4 border-bottom border-dark-subtle">
+
+                    <div class="d-flex mb-3">
+                        <div class="me-auto p-2">Bedrooms</div>
+                        <div class="p-2">
+                            <button id="btn3" type="button" class="btn btn-light border border-dark-subtle rounded-5"
+                                    onclick="Counertfunc1()">
+                                <svg width="15px" height="20px" viewBox="0 0 24 24" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path d="M5 12H19" stroke="#323232" stroke-width="2" stroke-linecap="round"
+                                              stroke-linejoin="round"></path>
+                                        <path d="M12 5L12 19" stroke="#323232" stroke-width="2" stroke-linecap="round"
+                                              stroke-linejoin="round"></path>
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="p-2 d-flex"><span class="p-2 counter">0</span></div>
+                        <div class="p-2">
+                            <button id="btn4" type="button" class="btn btn-light border border-dark-subtle rounded-5"
+                                    onclick="CounertfuncDown1()">
+                                <svg width="15px" height="20px" viewBox="0 0 24 24" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path d="M5 12H19" stroke="#323232" stroke-width="2" stroke-linecap="round"
+                                              stroke-linejoin="round"></path>
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-grid gap-2 m-1 h4 pb-2 mb-4 border-bottom border-dark-subtle">
+                    <div class="d-flex mb-3">
+                        <div class="me-auto p-2">Beds</div>
+                        <div class="p-2">
+                            <button id="btn5" type="button" class="btn btn-light border border-dark-subtle rounded-5"
+                                    onclick="Counertfunc2()">
+                                <svg width="15px" height="20px" viewBox="0 0 24 24" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path d="M5 12H19" stroke="#323232" stroke-width="2" stroke-linecap="round"
+                                              stroke-linejoin="round"></path>
+                                        <path d="M12 5L12 19" stroke="#323232" stroke-width="2" stroke-linecap="round"
+                                              stroke-linejoin="round"></path>
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="p-2 d-flex"><span class="p-2 counter">0</span></div>
+                        <div class="p-2">
+                            <button id="btn6" type="button" class="btn btn-light border border-dark-subtle rounded-5"
+                                    onclick="CounertfuncDown2()">
+                                <svg width="15px" height="20px" viewBox="0 0 24 24" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path d="M5 12H19" stroke="#323232" stroke-width="2" stroke-linecap="round"
+                                              stroke-linejoin="round"></path>
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-grid gap-2 m-1 h4 pb-2 mb-4 border-bottom border-dark-subtle">
+                    <div class="d-flex mb-3">
+                        <div class="me-auto p-2">Bathrooms</div>
+                        <div class="p-2">
+                            <button id="btn7" type="button" class="btn btn-light border border-dark-subtle rounded-5"
+                                    onclick="Counertfunc3()">
+                                <svg width="15px" height="20px" viewBox="0 0 24 24" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path d="M5 12H19" stroke="#323232" stroke-width="2" stroke-linecap="round"
+                                              stroke-linejoin="round"></path>
+                                        <path d="M12 5L12 19" stroke="#323232" stroke-width="2" stroke-linecap="round"
+                                              stroke-linejoin="round"></path>
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="p-2 d-flex"><span class="p-2 counter">0</span></div>
+                        <div class="p-2">
+                            <button id="btn8" type="button" class="btn btn-light border border-dark-subtle rounded-5"
+                                    onclick="CounertfuncDown3()">
+                                <svg width="15px" height="20px" viewBox="0 0 24 24" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path d="M5 12H19" stroke="#323232" stroke-width="2" stroke-linecap="round"
+                                              stroke-linejoin="round"></path>
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="cs-slider-wrapper cs-hide">
+
+            <div class="container m-auto ">
+                <div class="row m-5">
+                    <div class="col-4 ms-5 ">
+                        <span class="fw-bolder">
+                            Step 2
+                        </span> <br>
+                        <h2>
+                            Make your place stand out
+                        </h2>
+                        <p>
+                            In this step, you’ll add some of the amenities your place offers, plus 5 or more photos. Then, you’ll create a title and description.
+
+                        </p>
+
+                    </div>
+
+                    <div class="col-4 ms-5  ">
+                        <!-- <video
+                        class="w-100  h-50" src="/Step 1- Tell us about your place.mp4"
+                        autoplay>
+                        </video> -->
+
+                        <video class="firstv w-100 h-100" autoplay>
+                            <source src="/Step 1- Tell us about your place.mp4" type="video/mp4" />
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="cs-slider-wrapper cs-hide">
+            <h1> aaaaaaaaa</h1>
+        </div>
+
+        <div class="cs-slider-wrapper cs-hide">
+            <div>
+                <div class="container mt-5">
+                    <h1 class="text-center">Add some photos of your house</h1>
+                    <p class="text-center">
+                        You'll need 5 photos to get started. You can add more or make changes later.
+                    </p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="">
+                            <!-- <h2 id="upload-status" class="card-header"> Drag your photos here </h2> -->
+                            <div class="container">
+                                <!-- <div id="upload-status" class="text-center">Choose at least 5 photos</div> -->
+                                <div class="container">
+                                    <form method="post" action="/upload" enctype="multipart/form-data">
+                                        <div class="file-input-container">
+                                            <label for="images" class="drop-container">
+                                                <span id="upload-status" class="drop-title">Drag your Photos here</span>
+                                                <p> Choose at least 5 photos</p>
+                                                <!-- <i class="material-icons" style="font-size:48px;color:rgb(126, 104, 104)">cloud_upload</i> -->
+                                                <input type="file" id="fileInput" accept="image/*" name="photos[]"
+                                                       multiple required>
+                                                <div id="image-container"></div>
+                                            </label>
+                                        </div>
+                                        <!-- <button type="submit" class="btn btn-primary">Upload</button> -->
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="cs-slider-wrapper cs-hide">
+
+            <div class="container m-auto d-flex justify-content-center ">
+                <div class="row m-5">
+                    <div class>
+                        <h1>
+                            Now, let's give your apartment a title
+                        </h1>
+                        <span>
+                            Short titles work best. Have fun with it—you can always change it later.
+                        </span>
+                        <br>
+
+                        <div>
+
+                            <div class="container mt-5">
+                                <div class="row">
+                                    <div class="col-md-12 d-flex justify-content-center">
+                                        <textarea id="summary" onkeyup="validate()" class="form-control textarea"
+                                                  placeholder="Type Here..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <span id="words_count" class="d-none">
+                                        Words count - <span id="textcount"></span>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="cs-slider-wrapper cs-hide">
+
+            <div class="container m-auto d-flex justify-content-center ">
+                <div class="row m-5">
+                    <div class>
+                        <h1>
+                            Create your description
+                        </h1>
+                        <span>
+                            Share what makes your place special.
+                        </span>
+                        <br>
+
+                        <div>
+
+                            <div class="container mt-5">
+                                <div class="row">
+                                    <div class="col-md-12 d-flex justify-content-center">
+                                        <textarea id="desc" onkeyup="valid()" class="form-control textarea"
+                                                  placeholder="Type Here..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <span id="words" class="d-none">Words count - <span id="text"></span></span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="cs-slider-wrapper cs-hide">
+
+
+            <div class="container m-auto ">
+                <div class="row m-5">
+                    <div class="col-4 ms-5 ">
+                        <span class="fw-bolder">
+                            Step 3
+                        </span> <br>
+                        <h2>
+                            Finish up and publish
+                        </h2>
+                        <p>
+                            Finally, you’ll choose if you'd like to start with an experienced guest, then you'll set your
+                            nightly price. Answer a few quick questions and publish when you're ready.
+
+                        </p>
+
+                    </div>
+
+                    <div class="col-4 ms-5  ">
+                        <!-- <video
+                            class="w-100  h-50" src="/Step 1- Tell us about your place.mp4"
+                            autoplay>
+                            </video> -->
+
+                        <video class="firstv w-100 h-100" autoplay>
+                            <source src="/Step 1- Tell us about your place.mp4" type="video/mp4" />
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cs-slider-wrapper cs-hide">
+
+
+            <section class="ms-5 mt-3">
+                <div class="container d-flex justify-content-center ms-1 row-cols-3 ">
+                    <div>
+                        <div>
+                            <h1>Now, set your price</p>
+                        </div>
+                        <span class="text-secondary">You can change it anytime.</span><br>
+                        <div class="bg-secondary-subtle rounded-4 secondcont  h-50 mt-4">
+
+                            <div class="pt-2 d-flex justify-content-evenly ">
+
+
+                                <div class="pt-2">
+                                    <button id="firstbtn" type="button"
+                                            class="btn btn-light border border-dark-subtle rounded-5" onclick="Increment()">
+                                        <svg width="15px" height="20px" viewBox="0 0 24 24" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                               stroke-linejoin="round"></g>
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path d="M5 12H19" stroke="#323232" stroke-width="2"
+                                                      stroke-linecap="round" stroke-linejoin="round"></path>
+                                                <path d="M12 5L12 19" stroke="#323232" stroke-width="2"
+                                                      stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </g>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="p-2 d-flex justify-content-center bg-white p-2 rounded-1 w-50 ">
+                                    <span class="p-2 c fw-bold text-center">$10</span>
+                                </div>
+                                <div class="p-2">
+                                    <button id="secondbtn" type="button"
+                                            class="btn btn-light border border-dark-subtle rounded-5" onclick="Decrement()">
+                                        <svg width="15px" height="20px" viewBox="0 0 24 24" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                               stroke-linejoin="round"></g>
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path d="M5 12H19" stroke="#323232" stroke-width="2"
+                                                      stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </g>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center mt-2">Per Night</div>
+                            <br>
+                            <div class="d-flex justify-content-center mt-3">
+                                Places like yours in your area usually range
+                                from
+                                $44 to $73
+                            </div>
+
+                        </div>
+                        <div class="bg-secondary-subtle rounded-4 secondcont  h-25 mt-4">
+                            <div class="pt-4 ps-5 pe-5 d-flex justify-content-between secondsec">
+                                <div>
+                                    <p>
+                                        Get booked faster
+                                    </p>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                </div>
+                            </div>
+                            <div class="ps-5">
+                                <p>
+                                    Offer 20% off to your first 3 guests to help your place stand out.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </div>
+
+        <div class="cs-slider-wrapper cs-hide">
+
+            <div class="final">
+                <div class="container mt-5">
+                    <h1 class="text-center mb-5">Review your listing</h1>
+                    <p class="text-center mb-5">Here's what we'll show to guests. Make sure everything looks good.</p>
+                    <div class="row">
+                        <div class="container">
+                            <div class="listing-container">
+                                <img src="https://via.placeholder.com/500x400.png?text=Your+Cover+Photo+Here"
+                                     alt="Listing Cover Photo">
+                                <div class="listing-details">
+                                    <h3>What's next?</h3>
+                                    <div>
+                                        <h3><i class="fas fa-check-circle"></i>Verify a few details and publish</h3>
+
+                                        <ul>
+                                            <li>
+                                                We'll let you know if you need to confirm your identity or register with
+                                                the local government.
+                                            </li>
+                                        </ul>
+                                        <br>
+                                        <h3><i class="fas fa-calendar-alt"></i> Set up your calendar</h3>
+                                        <ul>
+                                            <li>
+                                                Choose which dates your listing is available. It will be visible 24
+                                                hours after you publish.
+                                            </li>
+                                        </ul>
+                                        <br>
+                                        <h3><i class="fas fa-cog"></i> Adjust your settings</h3>
+                                        <ul>
+                                            <li>
+                                                Set house rules, select a cancellation policy, choose how guests book,
+                                                and more.
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="btns-slider d-flex justify-content-between">
+            <button class="previousBtn cs-hide btn btn-outline-dark">Previous</button>
+            <div class="d-flex justify-content-end" style="width: 100%;">
+                <button class="SubmitBtn cs-hide btn btn-outline-dark">Submit</button>
+                <button class="nextBtn btn btn-outline-dark">Next</button>
+            </div>
+        </div>
+        <script src="slider.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNVQ8ew"
+                crossorigin="anonymous"></script>
+
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYo/lC+IbbVYUdhNHSFnRXToncNIaD+OrCXa"
+                crossorigin="anonymous"></script>
+
+</body>
+
+</html>

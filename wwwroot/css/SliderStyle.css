@@ -1,0 +1,360 @@
+.cs-hide {
+    display: none;
+}
+
+.btns-slider {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+}
+
+
+/* firstpage */
+
+.photo {
+    width: 100px;
+    height: 60px;
+}
+
+.save button {
+    border-radius: 20%;
+    background-color: white;
+}
+
+.footer div {
+    position: relative;
+    bottom: 60px;
+}
+
+.firstv {
+    width: 120px;
+}
+
+/* secondpage */
+
+#type {
+    display: inline-block;
+    width: 700px;
+    height: 120px;
+    border: 2px solid black;
+    margin: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin-bottom: 0rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+}
+
+    #type:hover {
+        background: #eee;
+        border-color: #111;
+    }
+
+        #type:hover #typebody {
+            background: #eee;
+            border-color: #111;
+        }
+
+    #type #typeicon {
+        width: 32px !important;
+        height: 32px !important;
+        object-fit: cover;
+        position: right;
+    }
+
+    #type #typebody {
+        padding: 10px;
+        background-color: #fff;
+        text-align: left;
+    }
+
+    #type #typetitle {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+#typetitle {
+    margin-bottom: 0.5rem;
+}
+
+#typeinput {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+    #typeinput:checked + #type {
+        border-color: #000000;
+        box-shadow: 0 0 5px rgba(60, 62, 65, 0.5);
+    }
+
+        #typeinput:checked + #type #typeicon {
+            opacity: 0.8;
+        }
+
+/* third  */
+
+
+#category {
+    display: inline-block;
+    width: 140px;
+    height: 100px;
+    border: 2px solid black;
+    margin: 10px;
+    padding: 10px 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+    #category:hover {
+        background: #eee;
+        border-color: #111;
+    }
+
+        #category:hover #body {
+            background: #eee;
+            border-color: #111;
+        }
+
+#title {
+    margin-bottom: 0.5rem;
+}
+
+#category #icon {
+    width: 32px !important;
+    height: 32px !important;
+    object-fit: cover;
+    position: center;
+}
+
+#category #body {
+    padding: 10px;
+    background-color: #fff;
+    text-align: center;
+}
+
+#category #title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+    #input:checked + #category {
+        border-color: #000000;
+        box-shadow: 0 0 5px rgba(60, 62, 65, 0.5);
+    }
+
+        #input:checked + #category #icon {
+            opacity: 0.8;
+        }
+
+
+/* fourth  */
+
+
+/*fifth */
+.margin-edit {
+    margin: 0% 11% !important;
+}
+
+
+
+/*seven */
+
+
+input[type=file]::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: #084cdf;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+}
+
+    input[type=file]::file-selector-button:hover {
+        background: #0d45a5;
+    }
+
+.drop-container {
+    /* background-image: url("https://global-uploads.webflow.com/5c6e75c31c5eeecf08e80678/5f2ab15ae5663376d805b9e5_large-photo-sizes.svg"); */
+    position: relative;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px dashed #555;
+    color: #444;
+    cursor: pointer;
+    transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+
+
+    .drop-container:hover {
+        background: #eee;
+        border-color: #111;
+    }
+
+        .drop-container:hover .drop-title {
+            color: #222;
+        }
+
+.drop-title {
+    color: #444;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    transition: color .2s ease-in-out;
+}
+
+#image-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.img-fit-slider img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin: 10px;
+}
+
+.delete-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+
+/* title view  */
+
+.comment {
+    width: 200px;
+    height: 200px;
+}
+
+.textarea {
+    resize: none;
+    height: 200px;
+    transition: all 0.5s;
+    border: 2px solid #DDDDDD;
+    width: 100% !important;
+}
+
+.textarea_danger {
+    border: 2px solid red !important;
+}
+
+.textarea:focus {
+    box-shadow: none;
+    outline: none;
+    border: 2px solid blue;
+}
+
+
+
+.secondcont {
+    width: 600px;
+}
+
+
+/* last one */
+
+.final {
+    font-family: Arial, sans-serif;
+}
+
+    .final h1 {
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+    .final h2 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .final h3 {
+        font-size: 18px;
+    }
+
+    .final p {
+        font-size: 18px;
+        color: #707070;
+    }
+
+    .final .listing-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 50px;
+    }
+
+.listing-container li {
+    color: #707070;
+}
+
+.final .listing-container img {
+    max-height: 400px;
+    margin-right: 50px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #ccc;
+}
+
+.final.listing-details {
+    flex: 1;
+}
+
+    .final .listing-details h2 {
+        margin-top: 0;
+    }
+
+    .final .listing-details p {
+        font-size: 1.2em;
+    }
+
+    .final .listing-details ul {
+        margin-top: 20px;
+        margin-bottom: 0;
+        list-style: none;
+    }
+
+    .final.listing-details li {
+        margin-bottom: 10px;
+    }
+
+        .final .listing-details li:last-child {
+            margin-bottom: 0;
+        }
+
+.final.btn-primary {
+    margin-top: 20px;
+}
