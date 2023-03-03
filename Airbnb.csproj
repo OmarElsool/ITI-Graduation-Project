@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\ManageListing\slider.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Grpc.Core" Version="2.46.6" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.14" />
@@ -27,10 +23,6 @@
   <ItemGroup>
     <Folder Include="Service\" />
     <Folder Include="Repository\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Views\ManageListing\slider.cshtml" />
   </ItemGroup>
 
 </Project>

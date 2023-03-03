@@ -53,12 +53,12 @@ namespace Airbnb.Data
 
             base.OnModelCreating(builder);
         }
-        protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
-        {
-            configurationBuilder.Properties<DateOnly>()
-               .HaveConversion<DateOnlyConverter, DateOnlyComparer>()
-               .HaveColumnType("date");
-            base.ConfigureConventions(configurationBuilder);
-        }
+        //protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+        //{
+        //    configurationBuilder.Properties<DateOnly>()
+        //       .HaveConversion<DateOnlyConverter, DateOnlyComparer>()
+        //       .HaveColumnType("date");
+        //    base.ConfigureConventions(configurationBuilder);
+        //}
     }
 }

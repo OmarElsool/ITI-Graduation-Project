@@ -21,7 +21,7 @@
             <div class="row navbar-wrapper">
                 <div class="col-md-4 d-flex justify-content-start">
                     <a class="w-25" href="#">
-                        <img src="./Images/Airbnb_Logo_Bélo.svg.png" alt="logo" class="img-fluid">
+                        <img src="~/Images/Airbnb_Logo_Bélo.svg.png" alt="logo" class="img-fluid">
                     </a>
                 </div>
                 <div class="offset-md-4 col-md-2 d-flex justify-content-end">
@@ -54,6 +54,8 @@
                             {
                                 <li><a class="dropdown-item" href="./Messages.html">Messages</a></li>
                                 <li><a class="dropdown-item" asp-action="Index" asp-controller="ManageListing">Manage Listing</a></li>
+                                <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">Profile</a>
+
                                 <li><hr class="dropdown-divider"></li>
                                 <li>
                                     <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout">Logout</a>

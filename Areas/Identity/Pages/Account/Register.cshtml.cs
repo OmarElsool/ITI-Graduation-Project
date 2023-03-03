@@ -19,6 +19,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using Airbnb.Models;
+using Microsoft.CodeAnalysis;
+using Airbnb.ModelsValidations;
 
 namespace Airbnb.Areas.Identity.Pages.Account
 {
@@ -79,7 +81,14 @@ namespace Airbnb.Areas.Identity.Pages.Account
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
-
+            [StringLength(50), Required]
+            public string FName { get; set; } = "";
+            [StringLength(50), Required]
+            public string LName { get; set; } = "";
+            [Required]
+            [DataType(DataType.Date)]
+            public DateTime BirthDate { get; set; }
+            public string PhoneNumber { get; set; }
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -107,16 +116,14 @@ namespace Airbnb.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(/*IFormFile img,*/string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = CreateUser();
+                var user = new AppUser() { FName = Input.FName, LName = Input.LName, PhoneNumber = Input.PhoneNumber, BirthDate = Input.BirthDate, Email = Input.Email, UserName = Input.Email, PasswordHash = Input.Password };
 
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
-                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
