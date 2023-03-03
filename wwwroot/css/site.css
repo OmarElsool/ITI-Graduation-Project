@@ -78,6 +78,7 @@ body {
 
 .dropdown-icon {
     margin: auto 0;
+    font-size: .875em !important;
 }
 
 .dropdown-list {

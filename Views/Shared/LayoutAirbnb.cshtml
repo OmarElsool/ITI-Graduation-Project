@@ -10,10 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="~/css/all.min.css" rel="stylesheet" />
-    <link href="~/css/site.css" rel="stylesheet" />
     <title>Airbnb</title>
-
     <link href="~/css/home.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -38,7 +37,7 @@
                         <button type="button" class="btn btn-danger dropdown-toggle custom-toggle-dropdown shadow-sm" data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="dropdown-container d-flex justify-content-between">
                                 <img src="./320774817_962603361383987_7324520275009562393_n.jpg" alt="..." class="img-fluid img-dropdown">
-                                <i class="fa-sharp fa-solid fa-bars dropdown-icon"></i>
+                                <i class="fa-solid fa-bars fa-sm dropdown-icon"></i>
                             </div>
                         </button>
                         <ul class="dropdown-menu dropdown-list shadow p-3 rounded">
@@ -54,8 +53,7 @@
                             else
                             {
                                 <li><a class="dropdown-item" href="./Messages.html">Messages</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" asp-action="Index" asp-controller="ManageListing">Manage Listing</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li>
                                     <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout">Logout</a>

@@ -15,7 +15,7 @@ namespace Airbnb.Data
         }
         public virtual DbSet<Mansion> Mansions { get; set; }
         public virtual DbSet<MansionCategory> MansionsCategories { get; set; }
-        public virtual DbSet<MansionCategory> MansionsPhotos { get; set; }
+        public virtual DbSet<MansionPhotoModel> MansionsPhotos { get; set; }
         public virtual DbSet<Chat> Chats { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<CreditCard> CreditCards { get; set; }
