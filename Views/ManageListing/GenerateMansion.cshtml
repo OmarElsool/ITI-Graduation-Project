@@ -39,7 +39,7 @@
 
             <div class="container m-auto ">
                 <div class="row m-5">
-                    <div class="col-4 ms-5 ">
+                    <div class="col-4 ms-5 mt-5 pt-5 ">
                         <span class="fw-bolder">
                             Step 1
                         </span> <br>
@@ -53,7 +53,7 @@
 
                     </div>
 
-                    <div class="col-4 ms-5  ">
+                    <div class="col-4 ms-5 mt-5  ">
                         <!-- <video
                             class="w-100  h-50" src="/Step 1- Tell us about your place.mp4"
                             autoplay>
@@ -111,18 +111,25 @@
                             Your address is only shared with guests after they’ve made a
                             reservation.
                         </p>
-                        <div class="input-group ">
+                        <div class="input-group has-validation ">
                             <span class="input-group-text" id="inputGroup-sizing-default">Street</span>
                             <input name="Street" type="text" class="form-control" aria-label="Sizing example input"
                                    aria-describedby="inputGroup-sizing-default">
                             <span asp-validation-for="@Model.Mansion.Street"></span>
+
                         </div>
 
+
                         <div class="input-group ">
+
                             <span class="input-group-text" id="inputGroup-sizing-default">City</span>
                             <input name="City" type="text" class="form-control" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-default">
+                                       aria-describedby="inputGroup-sizing-default" id="validationCustom03" required>
                             <span asp-validation-for="@Model.Mansion.City"></span>
+                                <div class="invalid-feedback">
+                                    Please provide a valid city.
+                                </div>
+
                         </div>
 
                         <div class="input-group ">
@@ -314,7 +321,7 @@
 
             <div class="container m-auto ">
                 <div class="row m-5">
-                    <div class="col-4 ms-5 ">
+                    <div class="col-4 ms-5 mt-5 pt-5 ">
                         <span class="fw-bolder">
                             Step 2
                         </span> <br>
@@ -328,7 +335,7 @@
 
                     </div>
 
-                    <div class="col-4 ms-5  ">
+                    <div class="col-4 ms-5 mt-5 ">
                         <!-- <video
                         class="w-100  h-50" src="/Step 1- Tell us about your place.mp4"
                         autoplay>
@@ -356,18 +363,29 @@
                     @foreach (var mansionServiceType in @Model.ServiceTypes)
                     {
                         <div class="text-center">
+
                             <h2>@mansionServiceType.ServiceType</h2>
                         </div>
                         @foreach (var mansionService in mansionServiceType.Service)
                         {
-                        <div class="col-md-2">
-                            <label>
+                        <div class="col-md-2 ">
+                            <label class="d-flex justify-content-center">
                             <input id="input" class="card-radio-input" type="checkbox" name="mansionService" value="@mansionService.Id" />
                               <div id="category" class="card">
                                 <div id="body" class="card-body">
-                                    <h5 id="title" class="card-title">@mansionService.Name</h5>
-                                  @*<p class="card-text">@mansionService.Description</p>*@
-                                </div>
+                                    <div>
+                                         <h5 id="title" class="card-title">@mansionService.Name</h5>
+                                                @*    <img id="icon" class="card-img-top"
+                                                 src="https://a0.muscache.com/pictures/4d7580e1-4ab2-4d26-a3d6-97f9555ba8f9.jpg"
+                                                 alt="Entire place photo" />*@
+                                                    <svg width="20px" height="20px"
+                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                                                        <path d="M64 64V352H576V64H64zM0 64C0 28.7 28.7 0 64 0H576c35.3 0 64 28.7 64 64V352c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64zM128 448H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H128c-17.7 0-32-14.3-32-32s14.3-32 32-32z" />
+                                                    </svg>
+                                    </div>
+@*                                  <p class="card-text">@mansionService.Description</p>
+
+*@                              </div>
                               </div>
                             </label>
                           </div>
@@ -487,7 +505,7 @@
 
             <div class="container m-auto ">
                 <div class="row m-5">
-                    <div class="col-4 ms-5 ">
+                    <div class="col-4 ms-5 mt-5 pt-5 ">
                         <span class="fw-bolder">
                             Step 3
                         </span> <br>
@@ -502,7 +520,7 @@
 
                     </div>
 
-                    <div class="col-4 ms-5  ">
+                    <div class="col-4 ms-5 mt-5  ">
                         <!-- <video
                             class="w-100  h-50" src="/Step 1- Tell us about your place.mp4"
                             autoplay>
@@ -611,7 +629,7 @@
                     <div class="row">
                         <div class="container">
                             <div class="listing-container">
-                                <img src="https://via.placeholder.com/500x400.png?text=Your+Cover+Photo+Here"
+                                    <img class="lastimg" src="https://via.placeholder.com/500x400.png?text=Your+Cover+Photo+Here"
                                      alt="Listing Cover Photo">
                                 <div class="listing-details">
                                     <h3>What's next?</h3>
