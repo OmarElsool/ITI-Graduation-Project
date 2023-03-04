@@ -19,24 +19,34 @@
     <nav class="navbar">
         <div class="container">
             <div class="row navbar-wrapper">
-                <div class="col-md-4 d-flex justify-content-start">
+                <div class="col-md-4 col-sm-4 d-flex justify-content-start">
                     <a class="w-25" href="#">
                         <img src="~/Images/Airbnb_Logo_Bélo.svg.png" alt="logo" class="img-fluid">
                     </a>
                 </div>
-                <div class="offset-md-4 col-md-2 d-flex justify-content-end">
-                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
-                {
-                        <div>
-                            <a class="btn btn-outline-dark" asp-action="Index" asp-controller="Admin">Admin Dashboard</a>
+@*                <div class="offset-md-4 col-md-2 d-flex justify-content-end">
+
+                </div>*@
+                <div class="col-md-8 col-sm-8 d-flex justify-content-end">
+                    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    {
+                        <div class="align-items-center d-flex mx-3">
+                            <a class="btn btn-outline-dark " asp-action="Index" asp-controller="Admin">Admin Dashboard</a>
                         </div>
-                }
-                </div>
-                <div class="col-md-2 d-flex justify-content-end">
+                    }
                     <div class="btn-group">
                         <button type="button" class="btn btn-danger dropdown-toggle custom-toggle-dropdown shadow-sm" data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="dropdown-container d-flex justify-content-between">
-                                <img src="./320774817_962603361383987_7324520275009562393_n.jpg" alt="..." class="img-fluid img-dropdown">
+                                @if (UserManager.GetUserAsync(User).Result.Photo != "")
+                                {
+                                    <img  class=" "  />
+                                    <img src="~/Images/UsersPhoto/@UserManager.GetUserAsync(User).Result.Photo" alt="user photo" class="img-fluid rounded-circle img-dropdown">
+                                    <p class="mb-0 d-none d-sm-block navbar-profile-name">@UserManager.GetUserAsync(User).Result.Email</p>
+                                }
+                                else
+                                {
+                                    <img class="img-fluid rounded-circle img-dropdown" src="~/Images/UsersPhoto/blank-profile-picture-973460_1280.webp" alt="">
+                                }
                                 <i class="fa-solid fa-bars fa-sm dropdown-icon"></i>
                             </div>
                         </button>
@@ -54,7 +64,7 @@
                             {
                                 <li><a class="dropdown-item" href="./Messages.html">Messages</a></li>
                                 <li><a class="dropdown-item" asp-action="Index" asp-controller="ManageListing">Manage Listing</a></li>
-                                <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">Profile</a>
+                                <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">Profile</a></li>
 
                                 <li><hr class="dropdown-divider"></li>
                                 <li>

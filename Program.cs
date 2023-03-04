@@ -1,6 +1,8 @@
 using Airbnb.Data;
 using Airbnb.Models;
+using Airbnb.Service;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Airbnb
@@ -26,10 +28,14 @@ namespace Airbnb
                 options.Password.RequireUppercase = false;
                 options.Password.RequireLowercase = false;
                 options.SignIn.RequireConfirmedEmail = false;
+                options.SignIn.RequireConfirmedAccount = false;
             })
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
+
+            //builder.Services.AddTransient<IEmailSender, EmailSender>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

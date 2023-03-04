@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject UserManager<AppUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -29,7 +31,7 @@
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-            <a class="w-25" href="#">
+            <a class="w-25" asp-action="Index" asp-controller="Home">
                 <img src="~/Images/Airbnb_Logo_Bélo.svg.png" alt="logo" class="img-fluid">
             </a>
             <img src="~/Images/Airbnb_Logo_Bélo.svg.png" alt="logo" class="img-fluid sidebar-brand brand-logo-mini">
@@ -94,14 +96,31 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
-                    <img class="img-xs rounded-circle" src="assets/images/faces/face15.jpg" alt="">
-                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Henry Klein</p>
+                    @if(UserManager.GetUserAsync(User).Result.Photo != "")
+                    {
+                        <img alt="user photo" class="img-xs rounded-circle" src="~/Images/UsersPhoto/@UserManager.GetUserAsync(User).Result.Photo" />
+                        <p class="mb-0 d-none d-sm-block navbar-profile-name">@UserManager.GetUserAsync(User).Result.Email</p>
+                    }
+                    else
+                    {
+                        <img class="img-xs rounded-circle" src="~/Images/UsersPhoto/blank-profile-picture-973460_1280.webp" alt="">
+                    }
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                   <h6 class="p-3 mb-0">Profile</h6>
                   <div class="dropdown-divider"></div>
+                    <a class="dropdown-item preview-item" asp-action="Index" asp-controller="Home">
+                        <div class="preview-thumbnail">
+                            <div class="preview-icon bg-dark rounded-circle">
+                                <i class="mdi mdi-home text-success"></i>
+                            </div>
+                        </div>
+                        <div class="preview-item-content">
+                            <p class="preview-subject mb-1">Home Page</p>
+                        </div>
+                    </a>
                   <a class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
@@ -113,7 +132,7 @@
                     </div>
                   </a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
+                    <a class="dropdown-item preview-item" asp-area="Identity" asp-page="/Account/Logout">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-logout text-danger"></i>

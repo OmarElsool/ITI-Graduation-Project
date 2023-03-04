@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace Airbnb.Controllers.Admin
 {
@@ -12,12 +13,13 @@ namespace Airbnb.Controllers.Admin
     public class AdminController : Controller
     {
         readonly ApplicationDbContext db;
-        //private readonly UserManager<AppUser> userManger;
+        private readonly UserManager<AppUser> userManager;
         //private readonly SignInManager<AppUser> signInManger;
 
-        public AdminController(ApplicationDbContext _db)
+        public AdminController(ApplicationDbContext _db, UserManager<AppUser> _userManager)
         {
             db = _db;
+            userManager = _userManager;
         }
         // Dashboard Page
         public IActionResult Index()
@@ -61,7 +63,7 @@ namespace Airbnb.Controllers.Admin
         }
         public IActionResult MansionDetails(int mansionId)
         {
-            var mansion = db.Mansions.Include(m => m.User).Include(m => m.Category).FirstOrDefault(m => m.Id == mansionId);
+            var mansion = db.Mansions.Include(m => m.User).Include(m => m.MansionPhotos).Include(m => m.Category).FirstOrDefault(m => m.Id == mansionId);
             if (mansion == null)
             {
                 return NotFound();
