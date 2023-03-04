@@ -236,7 +236,19 @@ function handleFiles() {
 
         // Add the delete icon to the image container
         imgContainer.appendChild(deleteIcon);
+
+
+
     }
+
+    let y = document.getElementsByClassName('image-container')[0].children[0].src;
+    let last = document.querySelector(".lastimg");
+    last.src = y;
+
+
+
+
+
 }
 const fileInput = document.getElementById('fileInput');
 fileInput.addEventListener('change', function () {
