@@ -178,3 +178,14 @@ body {
     width: 35px;
     height: 35px;
 }
+
+.card-wrapper-profile img {
+    height: 350px;
+    width: 350px;
+    object-fit: cover;
+}
+
+.chat-card a {
+    text-decoration: none;
+    color: black;
+}

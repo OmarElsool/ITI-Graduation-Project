@@ -40,3 +40,9 @@
 .gray {
     color: gray;
 }
+
+.slide-img-fix img {
+    height: 300px;
+    max-height: 300px;
+    object-fit: cover;
+}

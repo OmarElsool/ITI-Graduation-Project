@@ -4,26 +4,45 @@
     Layout = "LayoutAirbnb";
 }
 
-<h1>Chats</h1>
-<div class="border border-dark mx-auto">
-@foreach (var chat in @Model)
-{
-        <div class="custom-border-chat">
-            <h3 class="chat-titles">@chat.ChatName</h3>
-        </div>
-        <div class="chat-height">
+<h1 class="custom-border-chat">Chats</h1>
+<div class="mx-auto">
+@if(Model.Any()){
+    @foreach (var chat in @Model)
+    {
+        <div class="chat-height w-50 mx-auto chat-card">
+            <a asp-action="CreateChat" asp-route-ReceiverId="@chat.User.FirstOrDefault(u=>u.Id != ViewBag.currUser).Id">
             <div class="card mb-3 card-chat card-chat-bc">
                 <div class="row g-0">
-                    <div class="col-md-2">
-                        <img src="~/Images/UsersPhoto/@chat.User.FirstOrDefault(u=>u.Id != ViewBag.currUser).Photo" class="img-fluid rounded-circle chat-img" alt="...">
-                    </div>
+                    @if (@chat.User.FirstOrDefault(u => u.Id != ViewBag.currUser).Photo != ""){
+
+                        <div class="col-md-2">
+                            <img src="~/Images/UsersPhoto/@chat.User.FirstOrDefault(u=>u.Id != ViewBag.currUser).Photo" class="img-fluid rounded-circle chat-img" alt="...">
+                        </div>
+                    }else{
+                        <div class="col-md-2">
+                            <img src="~/Images/UsersPhoto/blank-profile-picture-973460_1280.webp" class="img-fluid rounded-circle chat-img" alt="...">
+                        </div>
+                    }
                     <div class="col-md-10">
                         <div class="card-body card-body-chat">
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <h4>@chat.User.FirstOrDefault(u=>u.Id != ViewBag.currUser).Email</h4>
+                            @if (@chat.Message.Any())
+                            {
+                                @if (@chat.Message.Last().MsgText.Length > 20){
+                                    <p>@chat.Message.Last().MsgText.Substring(0,20) + "...";</p>
+                                }else{
+                                    <p>@chat.Message.Last().MsgText</p>
+                                }
+                                <p class="card-text"><small class="text-muted">Last: @chat.Message.Last().MsgDate</small></p>
+                            }
                         </div>
                     </div>
                 </div>
             </div>
+        </a>
         </div>
+    }
+}else{
+    <h2>No Chat Found</h2>
 }
 </div>
