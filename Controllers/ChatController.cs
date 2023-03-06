@@ -6,9 +6,11 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Airbnb.Controllers
 {
+    [Authorize]
     public class ChatController : Controller
     {
         private readonly ApplicationDbContext db;
@@ -22,6 +24,7 @@ namespace Airbnb.Controllers
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var currentUser = db.Users.FirstOrDefault(u => u.Id == userId);
             var chat = db.Chats.Include(c => c.Message).Include(c => c.User).Where(c => c.User.Contains(currentUser)).ToList();
+
             ViewBag.currUser = userId;
             return View(chat);
         }
@@ -84,7 +87,7 @@ namespace Airbnb.Controllers
             ViewBag.currUser = userId;
             ViewBag.contactUser = ReceiverUser?.Id;
 
-            return View("Index", chat);
+            return View("CreateChat", chat);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Airbnb.Controllers
             _logger = logger;
             db = _db;
         }
-     
+
         public IActionResult Index()
         {
             HomeControlerViewModel homeControlerViewModel = new HomeControlerViewModel();
@@ -26,18 +26,26 @@ namespace Airbnb.Controllers
             homeControlerViewModel.MansionCategories = db.MansionsCategories.ToList();
             return View(homeControlerViewModel);
         }
-        
+
         public IActionResult FilterMansion(int CategoryId)
         {
             HomeControlerViewModel homeControlerViewModel = new HomeControlerViewModel();
             homeControlerViewModel.Mansion = (from m in db.Mansions
-                                              where m.CategoryId==CategoryId
-                                              select m).Include(a=>a.MansionPhotos).ToList();
+                                              where m.CategoryId == CategoryId
+                                              select m).Include(a => a.MansionPhotos).ToList();
             homeControlerViewModel.MansionCategories = db.MansionsCategories.ToList();
-            ViewBag.id=CategoryId;
+            ViewBag.id = CategoryId;
             return View(homeControlerViewModel);
         }
-
+        public IActionResult mansionDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var mansion = db.Mansions.Include(m => m.Services).Include(m => m.Reviews).Include(m => m.MansionPhotos).Include(m => m.User).FirstOrDefault(m => m.Id == id);
+            return View(mansion);
+        }
         public IActionResult Privacy()
         {
             return View();
