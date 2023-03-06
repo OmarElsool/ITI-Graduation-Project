@@ -4,6 +4,7 @@ using Airbnb.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Airbnb.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230305155459_AddChatName")]
+    partial class AddChatName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -235,7 +237,10 @@ namespace Airbnb.Data.Migrations
             modelBuilder.Entity("Airbnb.Models.CreditCard", b =>
                 {
                     b.Property<int>("CardNumber")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CardNumber"), 1L, 1);
 
                     b.Property<int>("CVV")
                         .HasColumnType("int");
@@ -370,6 +375,9 @@ namespace Airbnb.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("ChatId")
                         .HasColumnType("int");
 
@@ -381,15 +389,11 @@ namespace Airbnb.Data.Migrations
                         .HasMaxLength(2500)
                         .HasColumnType("nvarchar(2500)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("ChatId");
+                    b.HasIndex("AppUserId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("ChatId");
 
                     b.ToTable("Messages");
                 });
@@ -778,15 +782,13 @@ namespace Airbnb.Data.Migrations
 
             modelBuilder.Entity("Airbnb.Models.Message", b =>
                 {
+                    b.HasOne("Airbnb.Models.AppUser", "AppUser")
+                        .WithMany("Messages")
+                        .HasForeignKey("AppUserId");
+
                     b.HasOne("Airbnb.Models.Chat", "Chat")
                         .WithMany("Message")
                         .HasForeignKey("ChatId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Airbnb.Models.AppUser", "AppUser")
-                        .WithMany("Messages")
-                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

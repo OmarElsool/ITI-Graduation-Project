@@ -20,7 +20,7 @@
         <div class="container">
             <div class="row navbar-wrapper">
                 <div class="col-md-4 col-sm-4 d-flex justify-content-start">
-                    <a class="w-25" href="#">
+                    <a class="w-25" asp-action="Index" asp-controller="Home">
                         <img src="~/Images/Airbnb_Logo_Bélo.svg.png" alt="logo" class="img-fluid">
                     </a>
                 </div>
@@ -39,9 +39,7 @@
                             <div class="dropdown-container d-flex justify-content-between">
                                 @if (SignInManager.IsSignedIn(User) && UserManager.GetUserAsync(User).Result.Photo != "")
                                 {
-                                    <img  class=" "  />
                                     <img src="~/Images/UsersPhoto/@UserManager.GetUserAsync(User).Result.Photo" alt="user photo" class="img-fluid rounded-circle img-dropdown">
-                                    <p class="mb-0 d-none d-sm-block navbar-profile-name">@UserManager.GetUserAsync(User).Result.Email</p>
                                 }
                                 else
                                 {
@@ -62,7 +60,7 @@
                             }
                             else
                             {
-                                <li><a class="dropdown-item" href="./Messages.html">Messages</a></li>
+                                <li><a class="dropdown-item" asp-action="Index" asp-controller="Chat">Messages</a></li>
                                 <li><a class="dropdown-item" asp-action="Index" asp-controller="ManageListing">Manage Listing</a></li>
                                 <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">Profile</a></li>
 
@@ -80,9 +78,9 @@
         <hr class="w-100 custom-hr-nav">
     </nav>
     <div class="container">
-        <main role="main" class="pb-3">
+@*        <main role="main" class="pb-3">*@
             @RenderBody()
-        </main>
+        @*</main>*@
     </div>
     <script src="./js/Home.js"></script>
     <script src="https://kit.fontawesome.com/9a2d4d0470.js" crossorigin="anonymous"></script>

@@ -8,6 +8,7 @@ namespace Airbnb.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        public string ChatName { get; set; } = "";
         public virtual ICollection<AppUser> User { get; set; } = new HashSet<AppUser>();
         public virtual ICollection<Message> Message { get; set; } = new HashSet<Message>();
 
