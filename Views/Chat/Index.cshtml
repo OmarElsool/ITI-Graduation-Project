@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Chat>
+@{
+    ViewData["Title"] = "CreateChat";
+    Layout = "LayoutAirbnb";
+}
+
+<h1>Chats</h1>
+<div class="border border-dark mx-auto">
+@foreach (var chat in @Model)
+{
+        <div class="custom-border-chat">
+            <h3 class="chat-titles">@chat.ChatName</h3>
+        </div>
+        <div class="chat-height">
+            <div class="card mb-3 card-chat card-chat-bc">
+                <div class="row g-0">
+                    <div class="col-md-2">
+                        <img src="~/Images/UsersPhoto/@chat.User.FirstOrDefault(u=>u.Id != ViewBag.currUser).Photo" class="img-fluid rounded-circle chat-img" alt="...">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="card-body card-body-chat">
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+</div>

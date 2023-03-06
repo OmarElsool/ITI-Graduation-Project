@@ -6,6 +6,7 @@ namespace Airbnb.Models
     public class CreditCard
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int CardNumber { get; set; }
         [Required]
         public int CVV { get; set; }
