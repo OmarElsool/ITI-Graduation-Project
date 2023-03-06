@@ -24,7 +24,7 @@
                             @foreach (var image in item.MansionPhotos)
                             {
                                 <div class="carousel-item  border-5 @(image==item.MansionPhotos.First()?"active":"")">
-                                    <img src="~/Images/mansionsPhotos/@image.MansionPhoto" class="d-block w-100 img-thumbnail" alt="...">
+                                    <img src="~/Images/mansionsPhotos/@image.MansionPhoto" class="d-block w-100 mansion-image" alt="...">
                                 </div>
                             }
                         </div>
@@ -37,7 +37,7 @@
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-                    <div>
+                    <div class="m-0 p-0">
                         <p class="mt-2 ms-2 fw-bold info-title">@item.City</p>
                         <p class="ms-2 info-title gray">@item.Title</p>
                         <p class="ms-2 info-title gray">$@item.Price night</p>
