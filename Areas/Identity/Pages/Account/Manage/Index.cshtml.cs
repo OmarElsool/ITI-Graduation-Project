@@ -10,6 +10,7 @@ using Airbnb.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Hosting;
 
 namespace Airbnb.Areas.Identity.Pages.Account.Manage
 {
@@ -17,13 +18,16 @@ namespace Airbnb.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly IWebHostEnvironment hostEnvironment;
 
         public IndexModel(
             UserManager<AppUser> userManager,
-            SignInManager<AppUser> signInManager)
+            SignInManager<AppUser> signInManager,
+            IWebHostEnvironment _hostEnvironment)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            hostEnvironment = _hostEnvironment;
         }
 
         /// <summary>
@@ -56,12 +60,12 @@ namespace Airbnb.Areas.Identity.Pages.Account.Manage
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            public string Description { get; set; }
-            public string Work { get; set; }
-            public string Language { get; set; }
-            public string Location { get; set; }
+            public string Description { get; set; } = "";
+            public string Work { get; set; } = "";
+            public string Language { get; set; } = "";
+            public string Location { get; set; } = "";
             public string Photo { get; set; }
-            public string FName { get; set; }
+            public string FName { get; set; } = "";
         }
 
         private async Task LoadAsync(AppUser user)
@@ -115,9 +119,14 @@ namespace Airbnb.Areas.Identity.Pages.Account.Manage
                     ModelState.AddModelError("", "Must Upload Image");
                     return Page();
                 }
+                string path = Path.Combine(hostEnvironment.WebRootPath, "Images/UsersPhoto/");
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
                 string filename = user.Id.ToString() + "." + img.FileName.Split(".").Last();
                 user.Photo = filename;
-                using (var fs = System.IO.File.Create("wwwroot/Images/" + filename))
+                using (var fs = System.IO.File.Create("wwwroot/Images/UsersPhoto/" + filename))
                 {
                     img.CopyTo(fs);
                     await _userManager.UpdateAsync(user);

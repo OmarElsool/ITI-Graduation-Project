@@ -15,7 +15,7 @@ html {
 
 
 body {
-    margin-bottom: 60px;
+    /*margin-bottom: 60px;*/
     font-family: OpenSans;
     height: 100%;
 }
@@ -151,10 +151,14 @@ body {
 
 .custom-border-chat {
     border-bottom: 1px solid;
+    display: flex;
+    flex-direction: column;
 }
 
-.chat-height {
-    height: 81vh;
+.message-custom {
+    min-height: 74vh;
+    max-height: 74vh;
+    overflow: auto;
 }
 
 .card-chat {

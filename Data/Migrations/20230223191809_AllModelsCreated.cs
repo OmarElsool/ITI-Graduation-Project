@@ -100,8 +100,7 @@ namespace Airbnb.Data.Migrations
                 name: "CreditCards",
                 columns: table => new
                 {
-                    CardNumber = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CardNumber = table.Column<int>(type: "int", nullable: false),
                     CVV = table.Column<int>(type: "int", nullable: false),
                     Expiration = table.Column<DateTime>(type: "date", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
