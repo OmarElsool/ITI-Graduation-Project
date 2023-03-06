@@ -1,0 +1,247 @@
+/*#div1 {
+    width: 19rem;
+    height: 35rem;
+    border-radius: 10px;
+    margin-bottom: 150px;
+    position: relative;
+    top: 125px;
+    left: 155px;
+}
+
+.imgs {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.img1 {
+    width: 40%;
+    margin-top: 30px;
+    height: 150px;
+    position: relative;
+    left: 20px;
+}
+
+.img2 {
+    width: 40%;
+    margin-top: 40px;
+    height: 150px
+}
+
+#input1 {
+    color: black;
+    position: relative;
+    top: 10px;
+}
+
+#h1 {
+    font-family: opensansb;
+}
+
+#p1 {
+    font-family: opensanr;
+    font-size: 18px;
+    position: relative;
+    top: 8px;
+    margin-bottom: 25px;
+}
+
+#btn1 {
+    border-radius: 8px;
+    border-width: 0.5px;
+    background-color: white;
+    color: black;
+    font-size: 15px;
+    font-family: opensansb;
+    width: 10rem;
+    height: 3rem;
+}
+
+#div2 {
+    background: rgb(193, 210, 216);
+    height: 1px;
+    margin-top: 32px;
+    margin-bottom: 25px;
+    width: 250px;
+}
+
+#h4 {
+    position: relative;
+    left: 15px;
+    margin-bottom: 15px;
+}
+
+#p2 {
+    position: relative;
+    left: 15px;
+}
+
+#img3 {
+    position: relative;
+    width:7%;
+}
+
+#h2 {
+    position: absolute;
+    left: 520px;
+    bottom: 450px;
+    font-family: opensans;
+    font-weight: 600;
+}
+
+#h3 {
+    position: absolute;
+    left: 525px;
+    bottom: 430px;
+    font-family: opensans;
+    opacity: 75%;
+    font-size: 14px;
+}
+
+#a1 {
+    position: absolute;
+    left: 525px;
+    bottom: 400px;
+    font-family: opensansb;
+    opacity: 75%;
+    font-size: 14px;
+    color: black;
+}
+
+#h10 {
+    position: absolute;
+    left: 525px;
+    top: 300px;
+    font-family: opensans;
+}
+
+#div3 {
+    position: absolute;
+    left: 522px;
+    bottom: 170px;
+    width: 650px;
+    height: 110px;
+}
+
+#h5 {
+    position: absolute;
+    left: 525px;
+    bottom: 120px;
+    font-family: opensans;
+}
+
+#input2 {
+    position: absolute;
+    left: 522px;
+    bottom: 65px;
+    width: 650px;
+}
+
+#h6 {
+    position: absolute;
+    left: 525px;
+    top: 600px;
+    font-family: opensans;
+}
+
+#input3 {
+    position: absolute;
+    left: 522px;
+    top: 640px;
+    width: 650px;
+}
+
+#h7 {
+    position: absolute;
+    left: 525px;
+    top: 710px;
+    font-family: opensans;
+}
+
+#input4 {
+    position: absolute;
+    left: 522px;
+    top: 750px;
+    width: 650px;
+}
+
+#btn2 {
+    border-radius: 8px;
+    border-width: 0.5px;
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    font-family: opensansb;
+    width: 5rem;
+    height: 3rem;
+    position: absolute;
+    left: 1200px;
+    top: 800px;
+}
+
+#div4 {
+    position: absolute;
+    left: 525px;
+    top: 850px;
+    background: rgb(193, 210, 216);
+    height: 1px;
+    width: 620px;
+}
+
+#h8 {
+    position: absolute;
+    left: 525px;
+    top: 900px;
+    font-family: opensans;
+    font-size: 25px;
+}
+
+#img4 {
+    width: 23px;
+    margin-right: 8px;
+}
+
+#div5 {
+    position: absolute;
+    left: 525px;
+    top: 950px;
+    background: rgb(193, 210, 216);
+    height: 1px;
+    width: 620px;
+}
+
+#a2 {
+    position: absolute;
+    left: 525px;
+    top: 980px;
+    font-family: opensans;
+    font-size: 14px;
+    color: black;
+}
+
+#div6 {
+    position: relative;
+    left: 525px;
+    top: 310px;
+    background: rgb(193, 210, 216);
+    height: 1px;
+    width: 620px;
+}
+
+
+@font-face {
+    font-family: opensans;
+    src: url(OpenSans-Medium.ttf);
+}
+
+@font-face {
+    font-family: opensansb;
+    src: url(OpenSans-Bold.ttf);
+}
+
+@font-face {
+    font-family: opensansr;
+    src: url(OpenSans-Regular.ttf);
+}
+*/

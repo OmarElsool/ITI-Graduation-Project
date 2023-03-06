@@ -6,7 +6,7 @@ namespace Airbnb.Service
 {
     public class EmailSender : IEmailSender
     {
-        public async Task SendEmailAsync(string email, string subject, string htmlMessage)
+        public  async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
             var fromMail = "omarelsool17@gmail.com";
             var fromPassword = "omarelsool123123";
