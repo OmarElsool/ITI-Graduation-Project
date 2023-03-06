@@ -188,76 +188,60 @@ function CounertfuncDown3() {
 
 //seven
 
-
+const uploadBox = document.querySelector('.upload-box');
 const input = document.querySelector('#fileInput');
 const container = document.querySelector('#image-container');
-const body = document.querySelector('body');
+
+uploadBox.addEventListener('click', () => {
+    input.click();
+});
 
 input.addEventListener('change', handleFiles);
 
 function handleFiles() {
     const files = this.files;
 
-    // Check if files were uploaded and remove the background image if present
-    if (files.length > 0) {
-        body.classList.add('no-background');
+    if (files.length < 5) {
+        alert('Please upload at least 5 photos.');
+        return;
     }
+
+    container.innerHTML = '';
     document.getElementById('upload-status').textContent = '';
 
     for (let i = 0; i < files.length; i++) {
         const img = document.createElement('img');
         img.src = URL.createObjectURL(files[i]);
 
-        // Create a container div for each image
         const imgContainer = document.createElement('div');
         imgContainer.classList.add('image-container');
 
-        // Add the image element and container div to the container
         imgContainer.appendChild(img);
         container.appendChild(imgContainer);
 
-        // Create a delete icon for each image
         const deleteIcon = document.createElement('div');
         deleteIcon.classList.add('delete-icon');
         deleteIcon.innerHTML = '&#x2715;';
 
-        // Add a click event listener to the delete icon
-        deleteIcon.addEventListener('click', () => {
-            // Remove the image container from the container
+        deleteIcon.addEventListener('click', (event) => {
+            event.stopPropagation();
             container.removeChild(imgContainer);
-            // Revoke the temporary URL for the image file
             URL.revokeObjectURL(img.src);
 
-            // Check if no images are left and restore the background image if needed
             if (container.children.length === 0) {
-                body.classList.remove('no-background');
+                uploadBox.style.backgroundImage = 'url("/images/upload-background.jpg")';
             }
         });
-
-        // Add the delete icon to the image container
         imgContainer.appendChild(deleteIcon);
-
-
-
     }
+    uploadBox.style.backgroundImage = 'none';
+
 
     let y = document.getElementsByClassName('image-container')[0].children[0].src;
     let last = document.querySelector(".lastimg");
     last.src = y;
-
-
-
-
-
 }
-const fileInput = document.getElementById('fileInput');
-fileInput.addEventListener('change', function () {
-    const selectedFiles = fileInput.files.length;
-    if (selectedFiles < 5) {
-        alert('Please select at least 5 photos.');
-        fileInput.value = ''; // clear the input
-    }
-});
+
 
 
 
