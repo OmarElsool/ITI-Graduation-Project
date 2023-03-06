@@ -412,12 +412,14 @@
                                 <!-- <div id="upload-status" class="text-center">Choose at least 5 photos</div> -->
                                 <div class="container img-fit-slider">
                                         <div class="file-input-container">
-                                            <label for="images" class="drop-container">
-                                                <span id="upload-status" class="drop-title">Drag your Photos here</span>
+                                            <label for="file-input " class="upload-box drop">
+                                                <span id="upload-status" class="drop-title"> Click to Upload photos
+                                                    <br> or Drag your Photos here
+                                                </span>
                                                 <p> Choose at least 5 photos</p>
                                                 <!-- <i class="material-icons" style="font-size:48px;color:rgb(126, 104, 104)">cloud_upload</i> -->
-                                                <input type="file" id="fileInput" accept="image/*" name="photos"
-                                                       multiple required>
+                                                <input type="file" id="fileInput" accept="image/*" name="photos[]"
+                                                multiple required style="display: none;">
                                                 <div id="image-container"></div>
                                             </label>
                                         </div>

@@ -185,7 +185,7 @@ input[type=file]::file-selector-button {
         background: #0d45a5;
     }
 
-.drop-container {
+.drop {
     /* background-image: url("https://global-uploads.webflow.com/5c6e75c31c5eeecf08e80678/5f2ab15ae5663376d805b9e5_large-photo-sizes.svg"); */
     position: relative;
     display: flex;
@@ -203,12 +203,12 @@ input[type=file]::file-selector-button {
 }
 
 
-    .drop-container:hover {
+    .drop:hover {
         background: #eee;
         border-color: #111;
     }
 
-        .drop-container:hover .drop-title {
+        .drop:hover .drop-title {
             color: #222;
         }
 
