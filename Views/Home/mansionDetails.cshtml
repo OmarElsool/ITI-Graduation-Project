@@ -175,7 +175,7 @@
                                 <label for="Check-out checkOutjs">Check-out</label><br>
                                 <input class="reservecard" type="date" name="CheckOut" placeholder="Depature Date"><br>
                                 <label for="Guest No">Guest No</label><br>
-                                <input class="reservecard" name="GuestNo" type="number" >
+                                <input class="reservecard" name="GuestNo" type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
                                 <div class>      
                                     <div>
                                         <button class="res mt-2" type="submit">Reserve</button>
