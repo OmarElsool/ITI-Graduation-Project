@@ -14,8 +14,7 @@ namespace Airbnb.Models
         public DateTime Check_out { get; set; }
         public int NoGuests { get; set; } = 1;
         public DateTime PostDate { get; set; } = DateTime.Now;
-
-        public bool Approved = false;
+        public bool Approved { get; set; } = false;
         public virtual Transactions Transaction { get; set; }
         [ForeignKey("Mansion")]
         public int MansionId { get; set; }
