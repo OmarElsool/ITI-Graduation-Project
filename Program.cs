@@ -4,6 +4,7 @@ using Airbnb.Service;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
+using Airbnb.Hubs;
 
 namespace Airbnb
 {
@@ -33,6 +34,7 @@ namespace Airbnb
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
+            builder.Services.AddSignalR();
 
             //builder.Services.AddTransient<IEmailSender, EmailSender>();
 
@@ -62,7 +64,7 @@ namespace Airbnb
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             app.MapRazorPages();
-
+            app.MapHub<ChatHub>("/chatHub");
             app.Run();
         }
     }

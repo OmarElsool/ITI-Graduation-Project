@@ -41,7 +41,7 @@
                 <td>
                     <a class="btn btn-success btn-sm" asp-action="MansionOffer" asp-route-state="1" asp-route-reservationId="@Reservation.Id">Accept</a>
                     <a class="btn btn-danger btn-sm" asp-action="MansionOffer" asp-route-state="0" asp-route-reservationId="@Reservation.Id">Decline</a>
-                    <a class="btn btn-dark btn-sm" asp-action="CreateChat" asp-controller="Chat" asp-route-ReceiverId="@Reservation.UserId">Contact</a>
+                        <a class="btn btn-dark btn-sm" asp-action="CreateChat" asp-controller="Chat" asp-route-ReceiverId="@Reservation.UserId">Contact</a>
                 </td>
             </tr>
         }
