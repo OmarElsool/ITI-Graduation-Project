@@ -22,6 +22,24 @@ namespace Airbnb.Controllers
             var mansionState = db.Mansions.Include(m => m.Reviews).Include(m => m.Reservations).ThenInclude(m => m.User).Where(m => m.UserId == userId).ToList();
             return View(mansionState);
         }
+        public IActionResult MansionOffer(byte state, int reservationId)
+        {
+            var mansionReservation = db.Reservations.Find(reservationId);
+            if (mansionReservation == null)
+            {
+                return NotFound();
+            }
+            if (state == 1)
+            {
+                mansionReservation.Approved = true;
+            }
+            else
+            {
+                mansionReservation.Approved = false;
+            }
+            db.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
 
         [HttpPost]
         public IActionResult Review(ReviewViewModel model)
