@@ -4,6 +4,7 @@
     Layout = "LayoutAirbnb";
 }
 
+
 <div class="row gx-0">
     <div class="col-md-1 custom-chat-border">
 @*        <div class="custom-border-chat">
@@ -28,20 +29,20 @@
         <div class="custom-border-chat">
             <h3 class="chat-titles">@Model.User.FirstOrDefault(u=>u.Id == ViewBag.contactUser)</h3>
         </div>
-        <div class="d-flex justify-content-start flex-column message-custom">
+        <div class="d-flex justify-content-start flex-column message-custom messagesList">
         @if (Model.Message.Any()){
             @foreach (var Message in @Model.Message.TakeLast(20))
             {
                 if (Message.UserId == ViewBag.currUser)
                 {
                     <div>
-                        <p class="px-2 fw-bold">@Model.User.FirstOrDefault(u=>u.Id == ViewBag.currUser) :<span class="fst-italic fw-lighter">@Message.MsgText</span></p>
+                        <p class="px-2 fw-bold"><span class="user-us">@Model.User.FirstOrDefault(u=>u.Id == ViewBag.currUser)</span> :<span class="fst-italic fw-lighter user-msg">@Message.MsgText</span></p>
                     </div>
                 }
                 else if (Message.UserId == ViewBag.contactUser)
                 {
                     <div class="d-flex justify-content-end">
-                        <p class="px-2 fw-bold"><span class="fst-italic fw-lighter">@Message.MsgText</span> :@Model.User.FirstOrDefault(u=>u.Id == ViewBag.contactUser)</p>
+                        <p class="px-2 fw-bold"><span class="fst-italic fw-lighter user-msg">@Message.MsgText</span> :<span class="user-us">@Model.User.FirstOrDefault(u=>u.Id == ViewBag.contactUser)</span></p>
                     </div>
                 }
             }
@@ -53,8 +54,8 @@
                     <input type="hidden" name="ChatId" value="@Model.Id" />
                     <input type="hidden" name="UserId" value="@ViewBag.currUser" />
                     <input type="hidden" name="ReceiverId" value="@ViewBag.contactUser" />
-                    <input type="text" name="Message" placeholder="Type a message" class="form-control rounded-pill">
-                    <button type="submit" class="btn">
+                    <input type="text" id="messageInput" name="Message" placeholder="Type a message" class="form-control rounded-pill">
+                    <button type="submit" id="sendButton" class="btn">
                         <i class="fa-solid fa-play"></i>
                     </button>
                 </form>
@@ -77,4 +78,19 @@
         </div>
     </div>
 </div>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        scrollToBottom();
+        ('#sendButton').click(scrollToBottom());
 
+    });
+    const scrollToBottom = function(){
+        $('.messagesList').animate({
+            scrollTop: $('.chat-height').offset().top
+        }, 'slow');
+        console.log("scroll");
+    }
+</script>

@@ -76,18 +76,9 @@ namespace Airbnb.Controllers
             db.Messages.Add(msg);
             db.SaveChanges();
 
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var currentUser = db.Users.FirstOrDefault(u => u.Id == userId);
             var ReceiverUser = db.Users.FirstOrDefault(u => u.Id == ReceiverId);
-            if (currentUser == null && ReceiverUser == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            var chat = db.Chats.Include(c => c.Message).Include(c => c.User).FirstOrDefault(c => c.User.Contains(currentUser) && c.User.Contains(ReceiverUser));
-            ViewBag.currUser = userId;
-            ViewBag.contactUser = ReceiverUser?.Id;
 
-            return View("CreateChat", chat);
+            return RedirectToAction("CreateChat", new { ReceiverId = ReceiverUser.Id });
         }
     }
 }
