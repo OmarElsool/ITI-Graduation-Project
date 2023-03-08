@@ -22,7 +22,6 @@ namespace Airbnb.Data
         public virtual DbSet<Transactions> Transactions { get; set; }
         public virtual DbSet<Reservation> Reservations { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
-        public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<ServiceModel> Services { get; set; }
         public virtual DbSet<ServiceTypeModel> ServicesType { get; set; }
         public virtual DbSet<AccessFeatureModel> AccessFeatures { get; set; }
@@ -32,9 +31,6 @@ namespace Airbnb.Data
         {
             builder.Entity<MansionPhotoModel>(
                 o => o.HasKey(k => new { k.Id, k.MansionId })
-            );
-            builder.Entity<Comment>(
-                o => o.HasKey(k => new { k.Id, k.ReviewId })
             );
 
             builder.Entity<Reservation>()

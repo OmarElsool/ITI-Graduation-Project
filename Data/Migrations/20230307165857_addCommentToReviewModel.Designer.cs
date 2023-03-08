@@ -4,6 +4,7 @@ using Airbnb.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Airbnb.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230307165857_addCommentToReviewModel")]
+    partial class addCommentToReviewModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,7 +36,7 @@ namespace Airbnb.Data.Migrations
 
                     b.HasIndex("MansionId");
 
-                    b.ToTable("AccessFeatureModelMansion", (string)null);
+                    b.ToTable("AccessFeatureModelMansion");
                 });
 
             modelBuilder.Entity("Airbnb.Models.AccessFeatureModel", b =>
@@ -56,7 +58,7 @@ namespace Airbnb.Data.Migrations
 
                     b.HasIndex("AccessFeatureTypeId");
 
-                    b.ToTable("AccessFeatures", (string)null);
+                    b.ToTable("AccessFeatures");
                 });
 
             modelBuilder.Entity("Airbnb.Models.AccessFeatureType", b =>
@@ -73,7 +75,7 @@ namespace Airbnb.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AccessFeaturesTypes", (string)null);
+                    b.ToTable("AccessFeaturesTypes");
                 });
 
             modelBuilder.Entity("Airbnb.Models.AppUser", b =>
@@ -203,7 +205,7 @@ namespace Airbnb.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Chats", (string)null);
+                    b.ToTable("Chats");
                 });
 
             modelBuilder.Entity("Airbnb.Models.CreditCard", b =>
@@ -225,7 +227,7 @@ namespace Airbnb.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("CreditCards", (string)null);
+                    b.ToTable("CreditCards");
                 });
 
             modelBuilder.Entity("Airbnb.Models.Mansion", b =>
@@ -294,7 +296,7 @@ namespace Airbnb.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Mansions", (string)null);
+                    b.ToTable("Mansions");
                 });
 
             modelBuilder.Entity("Airbnb.Models.MansionCategory", b =>
@@ -311,7 +313,7 @@ namespace Airbnb.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MansionsCategories", (string)null);
+                    b.ToTable("MansionsCategories");
                 });
 
             modelBuilder.Entity("Airbnb.Models.MansionPhotoModel", b =>
@@ -333,7 +335,7 @@ namespace Airbnb.Data.Migrations
 
                     b.HasIndex("MansionId");
 
-                    b.ToTable("MansionsPhotos", (string)null);
+                    b.ToTable("MansionsPhotos");
                 });
 
             modelBuilder.Entity("Airbnb.Models.Message", b =>
@@ -365,7 +367,7 @@ namespace Airbnb.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Messages", (string)null);
+                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("Airbnb.Models.Reservation", b =>
@@ -401,7 +403,7 @@ namespace Airbnb.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Reservations", (string)null);
+                    b.ToTable("Reservations");
                 });
 
             modelBuilder.Entity("Airbnb.Models.Review", b =>
@@ -438,7 +440,7 @@ namespace Airbnb.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Reviews", (string)null);
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("Airbnb.Models.ServiceModel", b =>
@@ -464,7 +466,7 @@ namespace Airbnb.Data.Migrations
 
                     b.HasIndex("ServiceTypeId");
 
-                    b.ToTable("Services", (string)null);
+                    b.ToTable("Services");
                 });
 
             modelBuilder.Entity("Airbnb.Models.ServiceTypeModel", b =>
@@ -481,7 +483,7 @@ namespace Airbnb.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ServicesType", (string)null);
+                    b.ToTable("ServicesType");
                 });
 
             modelBuilder.Entity("Airbnb.Models.Transactions", b =>
@@ -506,7 +508,7 @@ namespace Airbnb.Data.Migrations
                     b.HasIndex("ReservationId")
                         .IsUnique();
 
-                    b.ToTable("Transactions", (string)null);
+                    b.ToTable("Transactions");
                 });
 
             modelBuilder.Entity("AppUserChat", b =>
@@ -521,7 +523,7 @@ namespace Airbnb.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AppUserChat", (string)null);
+                    b.ToTable("AppUserChat");
                 });
 
             modelBuilder.Entity("MansionServiceModel", b =>
@@ -536,7 +538,7 @@ namespace Airbnb.Data.Migrations
 
                     b.HasIndex("ServicesId");
 
-                    b.ToTable("MansionServiceModel", (string)null);
+                    b.ToTable("MansionServiceModel");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

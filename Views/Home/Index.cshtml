@@ -17,8 +17,8 @@
     <div class="row row-cols-4">
     @foreach(var item in Model.Mansion)
         {
-            <a  style="text-decoration:none; color:inherit;">
-                <div class="col mb-4">
+            <div class="col mb-4">
+                <a  style="text-decoration:none; color:inherit;" asp-action="mansionDetails" asp-controller="Home" asp-route-id="@item.Id">
                     <div id="carousel-@item.Id" class="carousel slide slide-img-fix" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             @foreach (var image in item.MansionPhotos)
@@ -42,8 +42,8 @@
                         <p class="ms-2 info-title gray">@item.Title</p>
                         <p class="ms-2 info-title gray">$@item.Price night</p>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
         }
     </div>
 </div>

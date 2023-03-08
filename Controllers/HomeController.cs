@@ -43,7 +43,7 @@ namespace Airbnb.Controllers
             {
                 return NotFound();
             }
-            var mansion = db.Mansions.Include(m => m.Services).Include(m => m.Reviews).Include(m => m.MansionPhotos).Include(m => m.User).FirstOrDefault(m => m.Id == id);
+            var mansion = db.Mansions.Include(m => m.Category).Include(m => m.Services).ThenInclude(s => s.ServiceType).Include(m => m.Reviews).ThenInclude(r => r.User).Include(m => m.MansionPhotos).Include(m => m.User).FirstOrDefault(m => m.Id == id);
             return View(mansion);
         }
         public IActionResult Privacy()

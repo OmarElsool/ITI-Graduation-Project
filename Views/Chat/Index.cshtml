@@ -9,6 +9,8 @@
 @if(Model.Any()){
     @foreach (var chat in @Model)
     {
+        @if (chat.User.Count() > 1)
+        {
         <div class="chat-height w-50 mx-auto chat-card">
             <a asp-action="CreateChat" asp-route-ReceiverId="@chat.User.FirstOrDefault(u=>u.Id != ViewBag.currUser).Id">
             <div class="card mb-3 card-chat card-chat-bc">
@@ -29,7 +31,7 @@
                             @if (@chat.Message.Any())
                             {
                                 @if (@chat.Message.Last().MsgText.Length > 20){
-                                    <p>@chat.Message.Last().MsgText.Substring(0,20) + "...";</p>
+                                    <p>@chat.Message.Last().MsgText.Substring(0,100) ...</p>
                                 }else{
                                     <p>@chat.Message.Last().MsgText</p>
                                 }
@@ -41,6 +43,7 @@
             </div>
         </a>
         </div>
+        }
     }
 }else{
     <h2>No Chat Found</h2>
