@@ -1,4 +1,4 @@
-window.addEventListener("load",function(){
+window.addEventListener("load", function () {
     //let imgArray = ["./Images/pexels-henda-watani-320014.jpg", "./Images/pexels-eberhard-grossgasteiger-1624256.jpg","./Images/pexels-patrick-gamelkoorn-13708903.jpg"];
     //let nextBtn = document.querySelector(".carousel-control-next");
     //let prevBtn = querySelector(".carousel-control-prev");
@@ -20,9 +20,10 @@ window.addEventListener("load",function(){
     //    }
     //    imgToSlide.src=`${imgArray[index]}`;
     //}
+
 })
 let index = 0
-function next(id,...src) {
+function next(id, ...src) {
     index++;
     if (index == src.length) {
         index = 0;

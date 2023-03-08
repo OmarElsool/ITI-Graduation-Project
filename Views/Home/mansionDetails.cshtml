@@ -1,0 +1,366 @@
+﻿@using System.Security.Claims
+@model Mansion
+@{
+    ViewData["Title"] = "mansionDetails";
+    Layout = "~/Views/Shared/LayoutAirbnb.cshtml";
+}
+
+    <link rel="stylesheet" href="~/css/style-mansion-details.css">
+
+    <div class="container">
+        <div>
+            <div>
+    <!-- room details header -->
+    <heaeder>
+        <div class="mt-3">
+                    <h2 class="d-inline">@Model.Title (@Model.Category.Name)</h2>
+        </div>
+        <br>
+
+        <div class="review d-flex justify-content-between ms-2">
+
+            <div>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                        @{
+                            int sumRating = 0;
+                            foreach (var review in Model.Reviews)
+                            {
+                                sumRating += review.Rating;
+                            }
+                            bool flag = Model.Reviews.Any();
+                            var result = 0;
+                            if(flag)
+                                result = sumRating / Model.Reviews.Count();
+                        }
+                        <span>Rating @result </span>
+                        <i class="fa-solid fa-medal"></i>
+                <span> Review @Model.Reviews.Count()</span>
+                <span> <a class="contact-host btn btn-outline-dark rounded-pill" asp-action="CreateChat" asp-controller="Chat" asp-route-ReceiverId="@Model.User.Id">Contact host</a></span>
+            </div>
+
+
+
+@*            <div>
+                <a href="" class="link-dark">
+                    Share
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-box-arrow-up" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M3.5 6a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 1 0-1h2A1.5 1.5 0 0 1 14 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-8A1.5 1.5 0 0 1 3.5 5h2a.5.5 0 0 1 0 1h-2z" />
+                        <path fill-rule="evenodd"
+                            d="M7.646.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 1.707V10.5a.5.5 0 0 1-1 0V1.707L5.354 3.854a.5.5 0 1 1-.708-.708l3-3z" />
+                    </svg>
+                </a>
+                <span>
+                    <a href="" class="link-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-heart" viewBox="0 0 16 16">
+                            <path
+                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                        </svg>
+                        Save
+                    </a>
+                </span>
+            </div>*@
+        </div>
+    </heaeder>
+    <br><br>
+    <!-- /room details header -->
+
+
+
+    <!-- imgs section -->
+    <section>
+        <div class="row">
+            @foreach (var mansionPhoto in @Model.MansionPhotos)
+            {
+                <div class="col-md-3 mb-1 mansion-details-photos">
+                    <img  src="~/Images/mansionsPhotos/@mansionPhoto.MansionPhoto" class="rounded img-fluid" alt="...">
+                </div>
+            }
+        </div>
+
+
+        </div>
+        </div>
+    </section><br>
+    <!-- /imgs section -->
+
+
+    <div class="row my-3">
+        <!-- Details Description -->
+        <section class="col-md-8">
+            <div class="row">
+
+                <hr>
+                <!-- /Room description1 -->
+            </div>
+            <div class="row">
+                <!-- Room description2 -->
+                <section>
+                    <div class="s-cover">
+                        <img src="~/Images/aircover.webp" width="150px">
+                    </div><br>
+                    <div>
+                        <pre>
+            Every booking includes free protection
+            from Host cancellations , listing inaccuracies 
+            and other issues like trouble checking in.
+                    </pre>
+                    </div>
+                    <button class="Learn-more fw-bolder btn btn-outline-dark rounded-pill" class="btn btn-link">Learn more </button>
+                </section>
+            </div>
+
+            <div class="row">
+
+                <section>
+                    <hr>
+                    <i class="fa-sharp fa-solid fa-language"></i>
+                    <span>Some info has been automatically translated.</span>
+                    <div>
+                        <a class="link-dark fw-bolder" href="#">Show original language</a>
+                        <p>@Model.Category.Name is in @Model.City</p>
+                        @if(@Model.Description.Length > 40){
+                            <p>
+                                @Model.Description.Substring(0,40)...
+                            </p>
+                            <a class="link-dark fw-bolder" href="">Show more </a>
+                        }else{
+                            <p>
+                                @Model.Description
+                            </p>
+                        }
+                    </div>
+                    <hr>
+                    <pre>
+                    <p>
+                    Relax with the whole family at this peaceful place 
+                    to stay with an amazing view of the sea and all 
+                    you need at the tip of your finger.
+                    </p>
+                    </pre>
+                    <hr>
+                    <h4>What this place offers</h4>
+                    <ul class="ul-m">
+                        @foreach (var service in @Model.Services)
+                        {
+                            <li><i class="fa-solid fa-bell-concierge"></i> @service.Name</li>
+                        }
+                    </ul>
+                </section>
+                <hr>
+            </div>
+
+        </section>
+
+        <section class="col-md-4">
+
+            <!-- Reserve Card -->
+            <section class="reserve-card-details mt-3-xl">
+                <div class="sticky-md-top">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body bg-white">
+                            <h5 class="card-title">$@Model.Price For Night</h5>
+                            <h6 class="card-subtitle mb-2 text-muted" class="inline-block">
+                            <i class="fa-sharp fa-sm fa-solid fa-star"></i> @result<a href=""> review</a>
+                            </h6>
+                            <form asp-action="Reservation" asp-controller="Mansion">
+                            <div asp-validation-summary="ModelOnly"></div>
+                                <input type="hidden" name="UserId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
+                                <input type="hidden" name="MansionId" value="@Model.Id" />
+                                <input type="hidden" name="Price" value="@Model.Price"/>
+                                <label for="Check-in">Check-in</label><br>
+                                <input class="reservecard checkInjs" type="date" name="CheckIn" placeholder="Araival Date"><br>
+                                <label for="Check-out checkOutjs">Check-out</label><br>
+                                <input class="reservecard" type="date" name="CheckOut" placeholder="Depature Date"><br>
+                                <label for="Guest No">Guest No</label><br>
+                                <input class="reservecard" name="GuestNo" type="number" >
+                                <div class>      
+                                    <div>
+                                        <button class="res mt-2" type="submit">Reserve</button>
+                                    </div>
+                            </form>
+                            <p class="card-text"> You won't be charged yet</p>
+
+                            <hr>
+                            <p><strong>&emsp;&emsp;&emsp;&emsp;$@Model.Price For Night</strong></p>
+                        </div>
+                    </div>
+            </section>
+            <!-- /Reserve Card -->
+        </section>
+    </div>
+
+
+
+
+
+    <!-- calendar -->
+    <section>
+        <div class="container">
+            <div class="left">
+                <div class="calendar">
+                    <div class="month">
+                        <i class="fas fa-angle-left prev"></i>
+                        <div class="date">december 2015</div>
+                        <i class="fas fa-angle-right next"></i>
+                    </div>
+                    <div class="weekdays">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                    </div>
+                    <div class="days"></div>
+                </div>
+                <div class="right">
+                    <div class="today-date">
+                        <div class="event-day">wed</div>
+                        <div class="event-date">12th december 2022</div>
+                    </div>
+                    <div class="events"></div>
+                    <div class="add-event-wrapper">
+                        <div class="add-event-header">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div>
+
+            </div>
+
+    </section>
+    <!-- /calendar -->
+    <!-- report btn -->
+    <div class="last-section-details-bottom">
+
+    </div>
+    <!-- /report btn -->
+
+    <!-- review -->
+    <hr>
+    <section>
+        <h5>
+            <i class="fa-sharp fa-solid fa-star"></i>
+            Rating @result Review @Model.Reviews.Count()
+        </h5>
+        <div class="m-3">
+        <form method="post" asp-action="Review" asp-controller="Mansion">
+        <div asp-validation-summary="All"></div>
+            <input type="hidden" name="UserId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
+            <input type="hidden" name="MansionId" value="@Model.Id"/>
+            <div class="row mb-2">
+                <div class="col-md-8">
+                        <div class="form-floating">
+                            <textarea class="form-control" name="ReviewComment" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                            <label for="floatingTextarea2">Comments</label>
+                        </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="ReviewRating" class="form-label">Review Rating</label>
+                    <input type="range" class="form-range reviewRange" min="1" max="5" id="ReviewRating" name="ReviewRating" value="0">
+                        <span class="ReviewRatingResult"><i class="fa-sharp fa-sm fa-solid fa-star"></i> 1</span>
+                    <script>
+                        var slideCol = document.querySelector(".reviewRange");
+                        var ReviewRatingResult = document.querySelector(".ReviewRatingResult");
+                        slideCol.oninput = function () {
+                                ReviewRatingResult.innerHTML = "<i class='fa-sharp fa-sm fa-solid fa-star'></i> " + this.value;
+                        }
+                    </script>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        </div>
+        <hr />
+        <div class="row">
+        @foreach (var review in Model.Reviews)
+        {
+            <div class="chat-height col-md-4 chat-card">
+                    <div class="card mb-3 card-chat card-chat-bc pt-2">
+                        <div class="row g-0">
+                            @if (review.User.Photo != "")
+                            {
+
+                                <div class="col-md-2">
+                                <img src="~/Images/UsersPhoto/@review.User.Photo" class="img-fluid rounded-circle chat-img" alt="...">
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-md-2">
+                                    <img src="~/Images/UsersPhoto/blank-profile-picture-973460_1280.webp" class="img-fluid rounded-circle chat-img" alt="...">
+                                </div>
+                            }
+                            <div class="col-md-10">
+                                <div class="card-body card-body-chat">
+                                    <h4>@review.User.Email</h4>
+                                    <p><i class="fa-sharp fa-sm fa-solid fa-star"></i> @review.Rating</p>
+                                    <p>@review.Comment</p>
+                                    <span class="text-muted">@review.CreatedAt</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        }
+        </div>
+        <button class="review-btn btn btn-outline-dark rounded-pill">Show all reviews</button>
+    </section>
+    <!-- host details -->
+    <hr>
+    <section>
+        <div>
+            <h4>Hosted by @Model.User.FName</h4>
+            <p>Posted in @Model.PostDate</p>
+        </div>
+        <div>
+            <i class="fa-sharp fa-solid fa-star"></i>
+            <span> Reviews @Model.Reviews.Count()</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-shield-check" viewBox="0 0 16 16">
+                <path
+                    d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z" />
+                <path
+                    d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+            </svg>
+            <span> Identity verified .</span>
+            <i class="fa-solid fa-medal"></i>
+            <span>Superhost .</span>
+        </div>
+        <div>
+            <h5>@Model.User.FName @Model.User.LName</h5>
+            <p>@Model.User.Description</p>
+            <a class="contact-host btn btn-outline-dark rounded-pill" asp-action="CreateChat" asp-controller="Chat" asp-route-ReceiverId="@Model.User.Id">Contact host</a>
+        </div>
+    </section>
+    <!-- /host details -->
+
+    <!-- Room Roles -->
+    <hr>
+
+    <!-- /Room Roles -->
+    <!-- social  -->
+    <div class="d-flex justify-content-between">
+        <div class="copyRight">
+            © 2023 Airbnb, Inc.
+        </div>
+        <div class="socail">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-google-plus-g"></i></a>
+        </div>
+    </div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/mansion-details.js"></script>
+<script src="~/js/main-mansion-details.js"></script>
+

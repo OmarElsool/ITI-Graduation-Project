@@ -12,6 +12,8 @@ namespace Airbnb.Models
 
         [Range(1, 5)]
         public int Rating { get; set; }
+        [Required]
+        public string Comment { get; set; } = "";
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; }
 
@@ -23,7 +25,5 @@ namespace Airbnb.Models
         [ForeignKey("Mansion")]
         public int MansionId { get; set; }
         public virtual Mansion Mansion { get; set; }
-        public virtual ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
-
     }
 }

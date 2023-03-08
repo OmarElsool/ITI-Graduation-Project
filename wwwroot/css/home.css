@@ -4,9 +4,9 @@
     justify-content: space-between;
 }
 
-.fa-solid {
+/*.fa-solid {
     font-size: x-large !important;
-}
+}*/
 
 .category-name {
     color: gray;
@@ -27,11 +27,13 @@
     border-bottom: 2px solid black;
     padding-bottom: 15px;
 }
-.mansion-image{
-    min-height:15rem;
-    max-height:15rem;
-    border-radius:10px;
+
+.mansion-image {
+    min-height: 15rem;
+    max-height: 15rem;
+    border-radius: 10px;
 }
+
 .info-title {
     padding: 0;
     margin: 0;
