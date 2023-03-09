@@ -22,7 +22,7 @@ namespace Airbnb.Controllers
         public IActionResult Index()
         {
             HomeControlerViewModel homeControlerViewModel = new HomeControlerViewModel();
-            homeControlerViewModel.Mansion = db.Mansions.Include(a => a.MansionPhotos).ToList();
+            homeControlerViewModel.Mansion = db.Mansions.Include(a => a.MansionPhotos).OrderByDescending(m => m.PostDate).ToList();
             homeControlerViewModel.MansionCategories = db.MansionsCategories.ToList();
             return View(homeControlerViewModel);
         }

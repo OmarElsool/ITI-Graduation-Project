@@ -30,7 +30,7 @@
                             <h4>@chat.User.FirstOrDefault(u=>u.Id != ViewBag.currUser).Email</h4>
                             @if (@chat.Message.Any())
                             {
-                                @if (@chat.Message.Last().MsgText.Length > 20){
+                                @if (@chat.Message.Last().MsgText.Length > 100){
                                     <p>@chat.Message.Last().MsgText.Substring(0,100) ...</p>
                                 }else{
                                     <p>@chat.Message.Last().MsgText</p>

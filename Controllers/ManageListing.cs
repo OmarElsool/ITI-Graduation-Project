@@ -37,7 +37,7 @@ namespace Airbnb.Controllers
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("Error", "SomeThing Went Wrong");
+                ModelState.AddModelError("", "SomeThing Went Wrong");
                 var mansionSlider = new MansionSliderViewModel
                 {
                     Mansion = new Mansion(),

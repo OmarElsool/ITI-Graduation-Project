@@ -72,18 +72,25 @@ namespace Airbnb.Controllers.Admin
         }
         public IActionResult MansionDelete(int? id)
         {
-            if (id == null)
+            try
             {
-                return NotFound();
+                if (id == null)
+                {
+                    return NotFound();
+                }
+                var mansion = db.Mansions.FirstOrDefault(m => m.Id == id);
+                if (mansion == null)
+                {
+                    return NotFound();
+                }
+                db.Mansions.Remove(mansion);
+                db.SaveChanges();
+                return Ok();
             }
-            var mansion = db.Mansions.FirstOrDefault(m => m.Id == id);
-            if (mansion == null)
+            catch (Exception e)
             {
-                return NotFound();
+                throw new Exception("This Mansion Has Relations ", e);
             }
-            db.Mansions.Remove(mansion);
-            db.SaveChanges();
-            return Ok();
         }
     }
 }

@@ -6,26 +6,9 @@
 
 
 <div class="row gx-0">
-    <div class="col-md-1 custom-chat-border">
-@*        <div class="custom-border-chat">
-            <h3 class="chat-titles">Chat</h3>
-        </div>
-        <div class="chat-height">
-            <div class="card mb-3 card-chat card-chat-bc">
-                <div class="row g-0">
-                    <div class="col-md-2">
-                        <img src="./320774817_962603361383987_7324520275009562393_n.jpg" class="img-fluid rounded-circle chat-img" alt="...">
-                    </div>
-                    <div class="col-md-10">
-                        <div class="card-body card-body-chat">
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>*@
+    <div class="col-md-2 custom-chat-border">
     </div>
-    <div class="col-md-10 custom-chat-border">
+    <div class="col-md-8 custom-chat-border">
         <div class="custom-border-chat">
             <h3 class="chat-titles">@Model.User.FirstOrDefault(u=>u.Id == ViewBag.contactUser)</h3>
         </div>
@@ -36,13 +19,14 @@
                 if (Message.UserId == ViewBag.currUser)
                 {
                     <div>
-                        <p class="px-2 fw-bold"><span class="user-us">@Model.User.FirstOrDefault(u=>u.Id == ViewBag.currUser)</span> :<span class="fst-italic fw-lighter user-msg">@Message.MsgText</span></p>
+                        <p class="px-2 fw-bold"><span class="user-us">@Model.User.FirstOrDefault(u=>u.Id == ViewBag.currUser)</span>: <span class="fst-italic fw-lighter user-msg">@Message.MsgText</span></p>
                     </div>
                 }
                 else if (Message.UserId == ViewBag.contactUser)
                 {
-                    <div class="d-flex justify-content-end">
-                        <p class="px-2 fw-bold"><span class="fst-italic fw-lighter user-msg">@Message.MsgText</span> :<span class="user-us">@Model.User.FirstOrDefault(u=>u.Id == ViewBag.contactUser)</span></p>
+                    @*class="d-flex justify-content-end"*@
+                    <div>
+                        <p class="px-2 fw-bold"><span class=" user-us ">@Model.User.FirstOrDefault(u=>u.Id == ViewBag.contactUser)</span>: <span class="user-msg fst-italic fw-lighter ">@Message.MsgText</span></p>
                     </div>
                 }
             }
@@ -50,7 +34,7 @@
         </div>
         <div class="chat-height d-flex justify-content-end flex-column">
             <div class="chat-message-form">
-                <form class="form-control d-flex" method="post" asp-action="SendMessage">
+@*                <form class="form-control d-flex" method="post" asp-action="SendMessage">
                     <input type="hidden" name="ChatId" value="@Model.Id" />
                     <input type="hidden" name="UserId" value="@ViewBag.currUser" />
                     <input type="hidden" name="ReceiverId" value="@ViewBag.contactUser" />
@@ -58,25 +42,71 @@
                     <button type="submit" id="sendButton" class="btn">
                         <i class="fa-solid fa-play"></i>
                     </button>
-                </form>
+                </form>*@
+                <div class="d-flex">
+                    <input type="text" id="messageInput" name="Message" placeholder="Type a message" class="form-control rounded-pill">
+                    <input type="hidden" class="userEmail" name="UserEmail" value="@Model.User.FirstOrDefault(u=>u.Id == ViewBag.currUser).Email" />
+                    <button type="submit" id="sendButton" class="btn">
+                        <i class="fa-solid fa-play"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 
 </div>
-<script src="~/js/signalr/dist/browser/signalr.js"></script>
-<script src="~/js/chat.js"></script>
+@*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>*@
+@*<script src="~/js/chat.js"></script>*@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script>
+    $(function () {
+
+        var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+        document.getElementById("sendButton").disabled = true;
+        connection.on("SendMsg", function (chatId, userName,message) {
+            console.log(userName, message);
+            var div = document.createElement("div");
+            div.innerHTML = "<div><p class='px-2 fw-bold'><span class='user-us'>" + userName + "</span> :<span class='fst-italic fw-lighter user-msg'>" + message + "</span></p></div>";
+            var list = document.querySelector(".messagesList");
+            list.appendChild(div);
+            console.log(div);
+            $('#messageInput').val("");
+        });
+
+        connection.start().then(function () {
+            document.getElementById("sendButton").disabled = false;
+            console.log("Connection start");
+        }).catch(function (err) {
+            return console.error(err.toString());
+        });
+
+        document.getElementById("sendButton").addEventListener("click", function (event) {
+            var chat = @Model.Id;
+            var userName = document.querySelector(".userEmail").value;
+            var message = document.getElementById("messageInput").value;
+            connection.invoke("SendMsg", chat, userName, message).catch(function (err) {
+                return console.error(err.toString());
+            });
+            event.preventDefault();
+        });
+
+    })
+</script>
+@*var user = @Model.User.FirstOrDefault(u=>u.Id == ViewBag.currUser)*@
 <script>
     $(document).ready(function () {
         scrollToBottom();
-        ('#sendButton').click(scrollToBottom());
+        $('#sendButton').click(function(){
+            scrollToBottom();
+            $('#messageInput').val("");
+        });
 
     });
     const scrollToBottom = function(){
         $('.messagesList').animate({
             scrollTop: $('.chat-height').offset().top
         }, 'slow');
-        console.log("scroll");
     }
 </script>

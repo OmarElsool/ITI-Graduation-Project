@@ -9,6 +9,7 @@ namespace Airbnb.ViewModels
         public DateTime CheckIn { get; set; }
         [Required]
         public DateTime CheckOut { get; set; }
+        [Required]
         public int GuestNo { get; set; }
         public int Price { get; set; }
         public int MansionId { get; set; }

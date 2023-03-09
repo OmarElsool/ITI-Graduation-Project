@@ -72,7 +72,7 @@ namespace Airbnb.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("CustomError", "Something Went Wrong");
+                ModelState.AddModelError("ReservationErr", "Something Went Wrong");
                 return RedirectToAction("mansionDetails", "Home", new { id = model.MansionId });
             }
             var mansion = db.Mansions.FirstOrDefault(m => m.Id == model.MansionId);

@@ -35,7 +35,7 @@
                         <span>@Model.CheckIn – @Model.CheckOut </span>
                     </div>
                     <div>
-                        <a href="" class="link-dark fw-bolder">Edit</a>
+                        @*<a href="" class="link-dark fw-bolder">Edit</a>*@
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                     <span> @Model.GuestNo Guests </span>
                 </div>
                 <div>
-                    <a href="" class="link-dark fw-bolder">Edit</a>
+                    @*<a href="" class="link-dark fw-bolder">Edit</a>*@
                 </div>
             </div>
 
@@ -148,13 +148,16 @@
             <form method="post" asp-action="Transaction">
                 <div asp-validation-summary="ModelOnly"></div>
                 @Html.ValidationMessage("customErr")
-                <input type="hidden" name="CheckIn" value="@Model.CheckIn" />
-                <input type="hidden" name="CheckOut" value="@Model.CheckOut" />
-                <input type="hidden" name="GuestNo" value="@Model.GuestNo" />
+                <input type="hidden" name="CheckIn" value="@Model.CheckIn" required />
+                <span asp-validation-for="CheckIn"></span>
+                <input type="hidden" name="CheckOut" value="@Model.CheckOut" required />
+                    <span asp-validation-for="CheckOut"></span>
+                <input type="hidden" name="GuestNo" value="@Model.GuestNo" required />
+                    <span asp-validation-for="GuestNo"></span>
                 <input type="hidden" name="Price" value="@totalPrice" />
                 <input type="hidden" name="MansionId" value="@Model.MansionId" />
                 <input type="hidden" name="UserId" value="@Model.UserId" />
-                <button type="submit" class="btn btn-danger">Confirm And Pay</button>
+                <button type="submit" class="btn btn-danger w-25">Confirm</button>
             </form>
             </div>
         </div>

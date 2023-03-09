@@ -83,7 +83,7 @@
                         <div class="col-md-2">
                             <label>
                                 <input id="input" class="card-radio-input" type="radio"
-                                       name="placeType" value="@mansionCategory.Id" />
+                                       name="placeType" value="@mansionCategory.Id" required/>
                                 <div id="category" class="card">
                                     <img id="icon" class="card-img-top"
                                          src="https://a0.muscache.com/pictures/4d7580e1-4ab2-4d26-a3d6-97f9555ba8f9.jpg"
@@ -114,7 +114,7 @@
                         <div class="input-group has-validation ">
                             <span class="input-group-text" id="inputGroup-sizing-default">Street</span>
                             <input name="Street" type="text" class="form-control" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-default">
+                                   aria-describedby="inputGroup-sizing-default" required>
                             <span asp-validation-for="@Model.Mansion.Street"></span>
 
                         </div>
@@ -135,14 +135,14 @@
                         <div class="input-group ">
                             <span class="input-group-text" id="inputGroup-sizing-default">Zip Code </span>
                             <input name="Zipcode" type="text" class="form-control" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-default">
+                                       aria-describedby="inputGroup-sizing-default" required>
                             <span asp-validation-for="@Model.Mansion.Zipcode"></span>
                         </div>
 
                         <div class="input-group ">
                             <span class="input-group-text" id="inputGroup-sizing-default">Build Number</span>
                                 <input name="Build_No" type="text" class="form-control" aria-label="Sizing example input"
-                                   aria-describedby="inputGroup-sizing-default">
+                                       aria-describedby="inputGroup-sizing-default" required>
                             <span asp-validation-for="@Model.Mansion.Build_No"></span>
                         </div>
                     </div>
@@ -370,7 +370,7 @@
                         {
                         <div class="col-md-2 ">
                             <label class="d-flex justify-content-center">
-                            <input id="input" class="card-radio-input" type="checkbox" name="mansionService" value="@mansionService.Id" />
+                            <input id="input" class="card-radio-input" required type="checkbox" name="mansionService" value="@mansionService.Id" />
                               <div id="category" class="card">
                                 <div id="body" class="card-body">
                                     <div>
@@ -450,7 +450,7 @@
                             <div class="container mt-5">
                                 <div class="row">
                                     <div class="col-md-12 d-flex justify-content-center">
-                                        <textarea name="Title" id="summary" onkeyup="validate()" class="form-control textarea"
+                                            <textarea name="Title" required id="summary" onkeyup="validate()" class="form-control textarea"
                                                   placeholder="Type Here..."></textarea>
                                     </div>
                                 </div>
@@ -486,7 +486,7 @@
                             <div class="container mt-5">
                                 <div class="row">
                                     <div class="col-md-12 d-flex justify-content-center">
-                                        <textarea name="Description" id="desc" onkeyup="valid()" class="form-control textarea"
+                                        <textarea required name="Description" id="desc" onkeyup="valid()" class="form-control textarea"
                                                   placeholder="Type Here..."></textarea>
                                     </div>
                                 </div>
@@ -680,7 +680,6 @@
             </div>
         </div>
 </div>
-<div asp-validation-summary="ModelOnly"></div>
     </form>
         <script src="~/js/slider.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -689,14 +688,16 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
                 integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNVQ8ew"
                 crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
 
 
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYo/lC+IbbVYUdhNHSFnRXToncNIaD+OrCXa"
                 crossorigin="anonymous"></script>
-
+        @section scripts{
+        <partial name="_ValidationScriptsPartial" />
+        }
 </body>
 
 </html>
