@@ -25,7 +25,7 @@
             </div>
         </div>*@
     </div>
-    <div class="col-md-7 custom-chat-border">
+    <div class="col-md-10 custom-chat-border">
         <div class="custom-border-chat">
             <h3 class="chat-titles">@Model.User.FirstOrDefault(u=>u.Id == ViewBag.contactUser)</h3>
         </div>
@@ -62,21 +62,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4 custom-chat-border">
-        <div class="custom-border-chat">
-            <h3 class="chat-titles">Details</h3>
-        </div>
-        <div class="chat-height">
-            <div class="card card-chat d-flex justify-content-center">
-                <img src="./320774817_962603361383987_7324520275009562393_n.jpg" class="card-img-top" alt="...">
-                <div class="card-body d-flex flex-column">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-outline-secondary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-    </div>
+
 </div>
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/chat.js"></script>
