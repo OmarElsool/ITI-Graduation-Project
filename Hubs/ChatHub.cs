@@ -27,18 +27,18 @@ namespace Airbnb.Hubs
             Groups.AddToGroupAsync(Context.ConnectionId, Context.User.Identity.Name);
             return base.OnConnectedAsync();
         }
-        public async Task SendMessage(string chatId, string message)
+        public async Task SendMsg(int chatId, string userName, string message)
         {
-            int _chatId = int.Parse(chatId);
+            //int _chatId = int.Parse(chatId);
             var currUser = await userManager.FindByIdAsync(CurrentUserId);
             Message msg = new Message
             {
-                ChatId = _chatId,
+                ChatId = chatId,
                 MsgText = message,
                 UserId = currUser.Id,
                 MsgDate = DateTime.Now,
             };
-            await Clients.Group("chat" + _chatId).SendAsync("SendMessage", currUser, message);
+            await Clients.All.SendAsync("SendMsg", chatId, userName, message);
             db.Messages.Add(msg);
             db.SaveChanges();
         }

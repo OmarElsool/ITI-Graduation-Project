@@ -20,6 +20,10 @@ body {
     height: 100%;
 }
 
+.rtl {
+    direction: rtl;
+}
+
 @font-face {
     font-family: 'opensans-regular';
     src: url('../fonts/opensans-regular.ttf') format('truetype');

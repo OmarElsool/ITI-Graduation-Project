@@ -59,26 +59,26 @@ namespace Airbnb.Controllers
 
             return View(chat);
         }
-        [HttpPost]
-        public IActionResult SendMessage(MessageViewModel model, string ReceiverId)
-        {
-            if (!ModelState.IsValid)
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            var msg = new Message()
-            {
-                ChatId = model.ChatId,
-                UserId = model.UserId,
-                MsgText = model.Message,
-                MsgDate = DateTime.Now
-            };
-            db.Messages.Add(msg);
-            db.SaveChanges();
+        //[HttpPost]
+        //public IActionResult SendMessage(MessageViewModel model, string ReceiverId)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    var msg = new Message()
+        //    {
+        //        ChatId = model.ChatId,
+        //        UserId = model.UserId,
+        //        MsgText = model.Message,
+        //        MsgDate = DateTime.Now
+        //    };
+        //    db.Messages.Add(msg);
+        //    db.SaveChanges();
 
-            var ReceiverUser = db.Users.FirstOrDefault(u => u.Id == ReceiverId);
+        //    var ReceiverUser = db.Users.FirstOrDefault(u => u.Id == ReceiverId);
 
-            return RedirectToAction("CreateChat", new { ReceiverId = ReceiverUser.Id });
-        }
+        //    return RedirectToAction("CreateChat", new { ReceiverId = ReceiverUser.Id });
+        //}
     }
 }

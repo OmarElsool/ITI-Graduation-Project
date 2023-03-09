@@ -99,7 +99,7 @@
 #category {
     display: inline-block;
     width: 140px;
-    height: 100px;
+    height: 115px !important;
     border: 2px solid black;
     margin: 10px;
     padding: 10px 10px;
@@ -359,8 +359,8 @@ input[type=file]::file-selector-button {
     margin-top: 20px;
 }
 
-.lastimg{
-    width:300px;
-    height:250px;
-    object-fit:contain;
+.lastimg {
+    width: 300px;
+    height: 250px;
+    object-fit: contain;
 }
