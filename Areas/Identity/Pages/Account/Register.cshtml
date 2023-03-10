@@ -305,10 +305,11 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+
         <script>
             window.onload = function () {
                 var today = new Date().toISOString().split('T')[0];
-                document.querySelector(".birth")[0].setAttribute('max', today);
+                document.getElementsByClassName("birth")[0].setAttribute('max', today);
             }
 
         </script>
