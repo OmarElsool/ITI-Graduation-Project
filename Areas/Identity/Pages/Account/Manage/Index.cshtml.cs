@@ -60,12 +60,7 @@ namespace Airbnb.Areas.Identity.Pages.Account.Manage
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            public string Description { get; set; } = "";
-            public string Work { get; set; } = "";
-            public string Language { get; set; } = "";
-            public string Location { get; set; } = "";
             public string Photo { get; set; }
-            public string FName { get; set; } = "";
         }
 
         private async Task LoadAsync(AppUser user)
@@ -76,12 +71,7 @@ namespace Airbnb.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
-                Description = user.Description,
-                Location = user.City,
-                Language = user.Language,
-                Work = user.Work,
                 Photo = user.Photo,
-                FName = user.FName,
             };
         }
 
@@ -134,29 +124,13 @@ namespace Airbnb.Areas.Identity.Pages.Account.Manage
             }
 
             var description = user.Description;
-            if (Input.Description != description)
-            {
-                user.Description = Input.Description;
-                await _userManager.UpdateAsync(user);
-            }
+
             var location = user.City;
-            if (Input.Location != location)
-            {
-                user.City = Input.Location;
-                await _userManager.UpdateAsync(user);
-            }
+
             var language = user.Language;
-            if (Input.Language != language)
-            {
-                user.Language = Input.Language;
-                await _userManager.UpdateAsync(user);
-            }
+
             var work = user.Work;
-            if (Input.Work != work)
-            {
-                user.Work = Input.Work;
-                await _userManager.UpdateAsync(user);
-            }
+
             //if(Request.Form.Files.Count > 0) {
             //    var file = Request.Form.Files.FirstOrDefault();
             //    using (var dataStream =new MemoryStream())

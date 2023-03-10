@@ -1,4 +1,5 @@
 ﻿@using System.Security.Claims
+@inject SignInManager<AppUser> SignInManager
 @model Mansion
 @{
     ViewData["Title"] = "mansionDetails";
@@ -119,18 +120,12 @@
                     <i class="fa-sharp fa-solid fa-language"></i>
                     <span>Some info has been automatically translated.</span>
                     <div>
-                        <a class="link-dark fw-bolder" href="#">Show original language</a>
-                        <p>@Model.Category.Name is in @Model.City</p>
-                        @if(@Model.Description.Length > 40){
-                            <p>
-                                @Model.Description.Substring(0,40)...
-                            </p>
-                            <a class="link-dark fw-bolder" href="">Show more </a>
-                        }else{
-                            <p>
-                                @Model.Description
-                            </p>
-                        }
+                        @*<a class="link-dark fw-bolder" href="#">Show original language</a>*@
+                        <h5>Location: <span>@Model.Category.Name is in @Model.City</span></h5>
+                        
+                        <p>
+                            @Model.Description
+                        </p>
                     </div>
                     <hr>
                     <pre>
@@ -253,6 +248,8 @@
             <i class="fa-sharp fa-solid fa-star"></i>
             Rating @result Review @Model.Reviews.Count()
         </h5>
+        @if (SignInManager.IsSignedIn(User))
+        {
         <div class="m-3">
         <form method="post" asp-action="Review" asp-controller="Mansion">
         <div asp-validation-summary="All"></div>
@@ -284,26 +281,28 @@
         </form>
         </div>
         <hr />
-        <div class="row">
-        @foreach (var review in Model.Reviews)
-        {
-            <div class="chat-height col-md-4 chat-card">
-                    <div class="card mb-3 card-chat card-chat-bc pt-2">
-                        <div class="row g-0">
-                            @if (review.User.Photo != "")
-                            {
+        }
 
-                                <div class="col-md-2">
-                                <img src="~/Images/UsersPhoto/@review.User.Photo" class="img-fluid rounded-circle chat-img" alt="...">
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="col-md-2">
-                                    <img src="~/Images/UsersPhoto/blank-profile-picture-973460_1280.webp" class="img-fluid rounded-circle chat-img" alt="...">
-                                </div>
-                            }
-                            <div class="col-md-10">
+            <div class="row">
+                @foreach (var review in Model.Reviews)
+                {
+                    <div class="chat-height col-md-4 chat-card">
+                        <div class="card mb-3 card-chat card-chat-bc pt-2">
+                            <div class="row g-0">
+                                @if (review.User.Photo != "")
+                                {
+
+                                    <div class="col-md-2">
+                                        <img src="~/Images/UsersPhoto/@review.User.Photo" class="img-fluid rounded-circle chat-img" alt="...">
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-md-2">
+                                        <img src="~/Images/UsersPhoto/blank-profile-picture-973460_1280.webp" class="img-fluid rounded-circle chat-img" alt="...">
+                                    </div>
+                                }
+                                <div class="col-md-10">
                                 <div class="card-body card-body-chat">
                                     <h4>@review.User.Email</h4>
                                     <p><i class="fa-sharp fa-sm fa-solid fa-star"></i> @review.Rating</p>
@@ -316,7 +315,7 @@
             </div>
         }
         </div>
-        <button class="review-btn btn btn-outline-dark rounded-pill">Show all reviews</button>
+        @*<button class="review-btn btn btn-outline-dark rounded-pill">Show all reviews</button>*@
     </section>
     <!-- host details -->
     <hr>
