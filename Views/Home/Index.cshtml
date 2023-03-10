@@ -6,7 +6,7 @@
     @foreach (var m in Model.MansionCategories)
     {
         <div class="scroll">
-            <i class=" fa-solid fa-umbrella-beach d-flex justify-content-center"></i>
+            <i class="fa-solid fa-hotel  d-flex justify-content-center"></i>
             <a class="my-1 category-name" asp-controller="Home" asp-action="FilterMansion" asp-route-CategoryId="@m.Id">@m.Name</a>
         </div>
         
