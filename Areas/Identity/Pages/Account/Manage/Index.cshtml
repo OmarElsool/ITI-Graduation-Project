@@ -1,4 +1,5 @@
 ﻿@page
+@using System.Security.Claims
 @model IndexModel
 @inject UserManager<AppUser> UserManager
 @{
@@ -6,7 +7,10 @@
     ViewData["ActivePage"] = ManageNavPages.Index;
     Layout = "~/Views/Shared/LayoutAirbnb.cshtml";
 }
-
+@{
+    var userId = @User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    var user = UserManager.Users.FirstOrDefault(u => u.Id == userId);
+}
 <div>
 
     <div class="d-flex ms-5 mt-3">
@@ -19,7 +23,7 @@
             <div class="text-center pb-3" >
                 @if (Model.Input.Photo != "")
                 {
-                        <img class="card-img-top img-fluid rounded-circle" id="profilePicture" src="~/Images/UsersPhoto/@Model.Input.Photo">
+                    <img class="card-img-top img-fluid rounded-circle" id="profilePicture" src="~/Images/UsersPhoto/@Model.Input.Photo">
                 }
                 else
                 {
@@ -49,7 +53,7 @@
                     <div id="div2"></div>
                 </center>
                 <h4 id="h4" class="sticky-bottom">
-                    @Model.Input.FName confirmed
+                    @user.Email confirmed
                 </h4>
                 <p id="p2">
                     <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">< https://fontawesome.com License - https://fontawesome.com/license ><path d="M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> Email address
@@ -62,21 +66,20 @@
         </div>
 
     </div>
-            
 
     <div class="ms-5">
 
         <div id="parent" class="container-sm">
             <div>
                 <h2 id="h2">
-                    Hi, I’m @Model.Input.FName
+                    Hi, I’m @user.Email
                 </h2>
 
             </div>
 
             <div>
                 <p class="font-weight-light text-secondary" id="h3">
-                    Joined in 2023
+                    @user.BirthDate.ToString("yyyy-MM-dd")
                 </p>
 
             </div>
@@ -155,43 +158,48 @@
 
 
 
-            <div class="mt-2">
+@*            <div class="mt-2">
                 <a id="a1" class="link-dark" href="">
                     Edit
                     profile
                 </a>
 
-            </div>
-
+            </div>*@
+            <form asp-action="ProfileInfo" asp-controller="Profile">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div>
 
             <h id="h10">About</h>
-
+@*
                 <div id="div3" class="input-group form-floating">
-                    <textarea asp-for="Input.Description" class="form-control" aria-label="With textarea"></textarea>
+                    <textarea name="Description" value="@user.Description" class="form-control" aria-label="With textarea"></textarea>
+                </div>*@
+                <div class="form-floating">
+                        <textarea class="form-control" name="Description" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px">@user.Description</textarea>
+                    <label for="floatingTextarea2">About</label>
                 </div>
 
             </div>
             <div class="pt-2">
                 <h id="h5">Location</h>
-                <input id="input2" asp-for="Input.Location" type="text" class="form-control">
+                <input id="input2" value="@user.City" name="Location" type="text" class="form-control">
             </div>
 
            <div class="pt-2">
                 <h id="h6">Languages I speak</h>
-                <input id="input3" asp-for="Input.Language" type="text" class="form-control">
+                    <input id="input3" value="@user.Language" name="Language" type="text" class="form-control">
            </div>
 
             <div class="pt-2">
                 <h id="h7">Work</h>
-                <input id="input4" asp-for="Input.Work" type="text" class="form-control">
+                <input id="input4" value="@user.Work" name="Work" type="text" class="form-control">
 
             </div>
 
             <div class="mt-2">
-                <button class=" btn-sm btn-outline-dark rounded-3" id="btn2">Save</button>
+                <button type="submit" class=" btn-sm btn-outline-dark rounded-3" id="btn2">Save</button>
             </div>
+            </form>
         </div>
     <div class="mt-2"  id="div4"></div>
     <h id="h8" class="ps-2">
@@ -199,10 +207,10 @@
     </h>
     <div id="div5">
     </div>
-    <a id="a2" href="">
+@*    <a id="a2" href="">
         Reviews
         by you
-    </a>
+    </a>*@
     <div id="div6">
     </div>
 

@@ -19,14 +19,14 @@ namespace Airbnb.Controllers
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("", "SomeThing Went Wrong");
-                return RedirectToAction("Index", "Home");
+                return RedirectToPage("/Account/Manage/Index", new { area = "Identity" });
+
             }
             var CreditExist = db.CreditCards.FirstOrDefault(c => c.UserId == model.UserId);
             if (CreditExist != null)
             {
                 ModelState.AddModelError("", "Credit Already Exist");
-                return RedirectToAction("Index", "Home");
-
+                return RedirectToPage("/Account/Manage/Index", new { area = "Identity" });
 
             }
             var newCredit = new CreditCard
@@ -38,7 +38,7 @@ namespace Airbnb.Controllers
             };
             db.CreditCards.Add(newCredit);
             db.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToPage("/Account/Manage/Index", new { area = "Identity" });
 
         }
     }

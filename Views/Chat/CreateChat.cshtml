@@ -10,7 +10,14 @@
     </div>
     <div class="col-md-8 custom-chat-border">
         <div class="custom-border-chat">
-            <h3 class="chat-titles">@Model.User.FirstOrDefault(u=>u.Id == ViewBag.contactUser)</h3>
+            @if (@Model.User.FirstOrDefault(u => u.Id != ViewBag.currUser).Photo != "")
+            {
+                <h3 class="chat-titles"><img src="~/Images/UsersPhoto/@Model.User.FirstOrDefault(u=>u.Id != ViewBag.currUser).Photo" class="img-fluid rounded-circle chat-img" alt="..."> @Model.User.FirstOrDefault(u=>u.Id == ViewBag.contactUser)</h3>
+            }
+            else
+            {
+                <h3 class="chat-titles"><img src="~/Images/UsersPhoto/blank-profile-picture-973460_1280.webp" class="img-fluid rounded-circle chat-img" alt="..."> @Model.User.FirstOrDefault(u=>u.Id == ViewBag.contactUser)</h3>
+            }
         </div>
         <div class="d-flex justify-content-start flex-column message-custom messagesList">
         @if (Model.Message.Any()){
