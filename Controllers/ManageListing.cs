@@ -23,6 +23,7 @@ namespace Airbnb.Controllers
 
         public IActionResult Index()
         {
+
             var mansionSlider = new MansionSliderViewModel
             {
                 Mansion = new Mansion(),
@@ -52,6 +53,7 @@ namespace Airbnb.Controllers
                 var srvc = db.Services.First(s => s.Id == service);
                 services.Add(srvc);
             }
+
             Mansion mansion = new Mansion
             {
                 City = model.City,
@@ -72,6 +74,7 @@ namespace Airbnb.Controllers
             };
             db.Mansions.Add(mansion);
             db.SaveChanges();
+
             foreach (var photo in model.photos)
             {
                 string photoName = UploadFiles(photo);
